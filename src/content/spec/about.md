@@ -1,9 +1,9 @@
 # About
-<!-- This is the demo site for [Fuwari](https://github.com/saicaca/fuwari). -->
+欢迎访问我的博客，我主要在这里上传博客或记录一些有意思的东西，
+> 你可以通过邮箱联系我：1404939185@qq.com  
+> 关于我的更多信息： [个人主页](https://www.oceanh.top/)  
 
+博客仓库，喜欢的朋友点点star，就是对我最大的支持，谢谢！：
 ::github{repo="Ocean-H1/blog-astro"}
-
-<!-- > ### Sources of images used in this site
-> - [Unsplash](https://unsplash.com/)
-> - [星と少女](https://www.pixiv.net/artworks/108916539) by [Stella](https://www.pixiv.net/users/93273965)
-> - [Rabbit - v1.4 Showcase](https://civitai.com/posts/586908) by [Rabbit_YourMajesty](https://civitai.com/user/Rabbit_YourMajesty) -->
+使用的template:
+::github{repo="saicaca/fuwari"}
