@@ -14,13 +14,13 @@ draft: false
 
 :::
 
-## 一、如何改变js中this指向问题？:ocean:
+## 一、如何改变js中this指向问题？
 
 ### 1. 通过ES6的箭头函数(指向函数定义时的this)
 
 ### 2. 通过call,bind,apply改变this指向
 
-## 二、call,bind,apply三者的主要区别:ocean:
+## 二、call,bind,apply三者的主要区别
 
 > * call,bind,apply这三个方法的第一个参数都是 **this的指向对象**
 
@@ -28,7 +28,7 @@ draft: false
 
 > * bind方法不会立即执行，而是返回一个新的函数，调用新函数的时候才会执行目标函数
 
-## 三、手动实现call，bind，apply方法:ocean:
+## 三、手动实现call，bind，apply方法
 
 ### 1.手动实现apply方法
 

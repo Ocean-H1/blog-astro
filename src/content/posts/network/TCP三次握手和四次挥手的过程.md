@@ -112,7 +112,7 @@ TCP断开连接是通过**四次挥手**的方式
 
 ![](https://images.oceanh.top/wave_ani.image)
 
-## 4. 提出一些问题:question:
+## 4. 提出一些问题
 
 ### 4.1 为什么要握手三次？两次行不行？
 
