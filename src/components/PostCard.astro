@@ -73,7 +73,7 @@ const { remarkPluginFrontmatter } = await entry.render();
             </Icon>
         </div>
         <ImageWrapper src={image} basePath={path.join("content/posts/", getDir(entry.id))} alt="Cover Image of the Post"
-                  class="w-full h-full object-fill">
+                  class="w-full h-full object-fill post-cover">
         </ImageWrapper>
     </a>}
 
@@ -90,5 +90,13 @@ const { remarkPluginFrontmatter } = await entry.render();
 </div>
 <div class="transition border-t-[1px] border-dashed mx-6 border-black/10 dark:border-white/[0.15] last:border-t-0 md:hidden"></div>
 
-<style lang="stylus" define:vars={{coverWidth}}>
+<style lang="stylus" define:vars={{coverWidth}} is:global>
+  .post-cover {
+    img {
+      transition: .3s ease-out;
+    }
+    img:hover {
+      transform: scale3d(1.3, 1.3, 1.3);
+    }
+  }
 </style>
