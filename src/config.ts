@@ -34,7 +34,7 @@ export const navBarConfig: NavBarConfig = {
     LinkPreset.Archive,
     LinkPreset.About,
     {
-      name: 'Repositories',
+      name: 'Star',
       url: 'https://github.com/Ocean-H1/blog-astro',     // Internal links should not include the base path, as it is automatically added
       external: true,                               // Show an external link icon and will open in a new tab
     },

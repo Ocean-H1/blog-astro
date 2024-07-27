@@ -4,6 +4,7 @@ import Navbar from "@components/Navbar.astro";
 import SideBar from "@components/widget/SideBar.astro";
 import Footer from "@components/Footer.astro";
 import BackToTop from "@components/control/BackToTop.astro";
+import CommentWaline from "@components/CommentWaline.astro";
 // import {siteConfig} from "@/config";
 // import {pathsEqual} from "@utils/url-utils";
 
@@ -11,9 +12,10 @@ interface Props {
     title?: string;
     banner?: string;
     description?: string;
+    isBlog?: boolean
 }
 
-const { title, banner, description } = Astro.props
+const { title, banner, description, isBlog = false } = Astro.props
 // const isHomePage = pathsEqual(Astro.url.pathname, '/')
 // const enableBanner = siteConfig.banner.enable
 
@@ -34,6 +36,7 @@ const { title, banner, description } = Astro.props
         <!-- the overflow-hidden here prevent long text break the layout-->
         <main id="swup" class="transition-fade">
             <slot></slot>
+            {isBlog && <CommentWaline/>}
         </main>
 
     </div>
