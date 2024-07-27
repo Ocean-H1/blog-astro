@@ -5,7 +5,8 @@ import ImageWrapper from "./misc/ImageWrapper.astro";
 import { Icon } from 'astro-icon/components';
 import {i18n} from "../i18n/translation";
 import I18nKey from "../i18n/i18nKey";
-import {getDir} from "../utils/url-utils";
+import {getDir, getPostUrlBySlug} from "../utils/url-utils";
+import PageviewCount from "./PageviewCount.astro";
 
 interface Props {
     class?: string;
@@ -29,6 +30,7 @@ const coverWidth = "35%";
 
 const { remarkPluginFrontmatter } = await entry.render();
 
+const pathName= getPostUrlBySlug(entry?.slug).replace(/\/$/,'')
 ---
 <div class:list={["card-base flex flex-col-reverse md:flex-col w-full rounded-[var(--radius-large)] overflow-hidden relative", className]} style={style}>
     <div class:list={["pl-6 md:pl-9 pr-6 md:pr-2 pt-6 md:pt-7 pb-6 relative", {"w-full md:w-[calc(100%_-_52px_-_12px)]": !hasCover, "w-full md:w-[calc(100%_-_var(--coverWidth)_-_12px)]": hasCover}]}>
@@ -52,11 +54,17 @@ const { remarkPluginFrontmatter } = await entry.render();
             { description }
         </div>
 
-        <!-- word count and read time  -->
+        <!-- word count, read time, pageView count  -->
         <div class="text-sm text-black/30 dark:text-white/30 flex gap-4 transition">
             <div>{remarkPluginFrontmatter.words} {" " + i18n(I18nKey.wordsCount)}</div>
             <div>|</div>
             <div>{remarkPluginFrontmatter.minutes} {" " + i18n(I18nKey.minutesCount)}</div>
+            <div>|</div>
+            <PageviewCount pathName={pathName} class="flex items-center justify-center gap-2">
+              <slot slot="icon">
+                <Icon name="material-symbols:visibility-outline-rounded" class="h-4 w-4"></Icon>
+              </slot>
+            </PageviewCount>
         </div>
 
     </div>

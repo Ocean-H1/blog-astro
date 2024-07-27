@@ -1,0 +1,33 @@
+---
+import { SERVER_URL } from "@constants/constants";
+
+type Props = {
+  class?: string
+  pathName?: string
+}
+const className = Astro.props.class
+const pathName = Astro.props.pathName || Astro.url.pathname.replace(/\/$/,'')
+---
+<div class:list={[className, "pageview-count"]}>
+  <slot name="icon"></slot>
+  <span class="waline-pageview-count text-sm" data-path={pathName} data-server-url={SERVER_URL} />
+</div>
+
+<script type="module">
+  import { pageviewCount } from 'https://unpkg.com/@waline/client@v3/dist/pageview.js';
+
+  const el = document.querySelector('.waline-pageview-count')
+  const serverURL = el?.getAttribute('data-server-url')
+  const pathName = el?.getAttribute('data-path')
+
+  pageviewCount({
+    serverURL: serverURL,
+    path: pathName,
+
+    // 可选的，用于自定选择器，默认为 `'.waline-pageview-count'`
+    // selector: 'waline-pageview-count',
+
+    // 可选的，是否在获取时增加访问量，默认为 `true`
+    update: true,
+  });
+</script>

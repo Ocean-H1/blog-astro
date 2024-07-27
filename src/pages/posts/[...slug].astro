@@ -13,6 +13,7 @@ import Markdown from "@components/misc/Markdown.astro";
 import path from "path";
 import {profileConfig} from "../../config";
 import {formatDateToYYYYMMDD} from "../../utils/date-utils";
+import PageviewCount from '@components/PageviewCount.astro';
 
 export async function getStaticPaths() {
     const blogEntries = await getCollection('posts', ({ data }) => {
@@ -42,7 +43,7 @@ const jsonLd = {
     "datePublished": formatDateToYYYYMMDD(entry.data.published),
     // TODO include cover image here
 }
-
+const pathName= getPostUrlBySlug(entry?.slug).replace(/\/$/,'')
 ---
 <MainGridLayout banner={entry.data.image} title={entry.data.title} description={entry.data.description} isBlog>
     <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
@@ -50,7 +51,7 @@ const jsonLd = {
         <div id="post-container" class:list={["card-base z-10 px-6 md:px-9 pt-6 pb-4 relative w-full ",
             {}
         ]}>
-            <!-- word count and reading time -->
+            <!-- word count, reading time, pageview count-->
             <div class="flex flex-row text-black/30 dark:text-white/30 gap-5 mb-3 transition onload-animation">
                 <div class="flex flex-row items-center">
                     <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
@@ -64,6 +65,14 @@ const jsonLd = {
                     </div>
                     <div class="text-sm">{remarkPluginFrontmatter.minutes} {" " + i18n(I18nKey.minutesCount)}</div>
                 </div>
+                <!-- pageview count -->
+                <PageviewCount class='flex flex-row items-center' pathName={pathName}>
+                  <slot slot="icon">
+                      <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
+                        <Icon name="material-symbols:visibility-outline-rounded"></Icon>
+                      </div>
+                  </slot>
+                </PageviewCount>
             </div>
 
             <!-- title -->
