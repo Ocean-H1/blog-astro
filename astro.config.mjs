@@ -10,6 +10,7 @@ import remarkMath from "remark-math"
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs"
 import { GithubCardComponent } from "./src/plugins/rehype-component-github-card.mjs"
 import { AdmonitionComponent } from "./src/plugins/rehype-component-admonition.mjs"
+import { remarkModifiedTime } from "./src/plugins/remark-modified-time.mjs";
 import remarkDirective from "remark-directive" /* Handle directives */
 import remarkGithubAdmonitionsToDirectives from "remark-github-admonitions-to-directives";
 import rehypeComponents from "rehype-components"; /* Render the custom directive content */
@@ -61,7 +62,7 @@ export default defineConfig({
     sitemap(),
   ],
   markdown: {
-    remarkPlugins: [remarkMath, remarkReadingTime, remarkGithubAdmonitionsToDirectives, remarkDirective, parseDirectiveNode],
+    remarkPlugins: [remarkMath, remarkReadingTime, remarkGithubAdmonitionsToDirectives, remarkDirective, parseDirectiveNode, remarkModifiedTime],
     rehypePlugins: [
       rehypeKatex,
       rehypeSlug,
