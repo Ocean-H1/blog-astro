@@ -1,51 +1,56 @@
 ---
-import GlobalStyles from "@components/GlobalStyles.astro";
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
-import ImageWrapper from "@components/misc/ImageWrapper.astro";
+import GlobalStyles from '@components/GlobalStyles.astro'
+import '@fontsource/roboto/400.css'
+import '@fontsource/roboto/500.css'
+import '@fontsource/roboto/700.css'
+import ImageWrapper from '@components/misc/ImageWrapper.astro'
 
-import {pathsEqual} from "@utils/url-utils";
-import ConfigCarrier from "@components/ConfigCarrier.astro";
-import {profileConfig, siteConfig} from "@/config";
-import {type Favicon} from "../types/config";
-import {defaultFavicons} from "../constants/icon";
-import {LIGHT_MODE, DARK_MODE, AUTO_MODE, DEFAULT_THEME} from "../constants/constants";
-import {url} from "../utils/url-utils";
+import { pathsEqual } from '@utils/url-utils'
+import ConfigCarrier from '@components/ConfigCarrier.astro'
+import { profileConfig, siteConfig } from '@/config'
+import { type Favicon } from '../types/config'
+import { defaultFavicons } from '../constants/icon'
+import {
+  LIGHT_MODE,
+  DARK_MODE,
+  AUTO_MODE,
+  DEFAULT_THEME,
+} from '../constants/constants'
+import { url } from '../utils/url-utils'
 
 interface Props {
-	title?: string;
-	banner?: string;
-	description?: string;
+  title?: string
+  banner?: string
+  description?: string
 }
 
-let { title, banner, description } = Astro.props;
+let { title, banner, description } = Astro.props
 
-const isHomePage = pathsEqual(Astro.url.pathname, '/');
+const isHomePage = pathsEqual(Astro.url.pathname, '/')
 
 // defines global css variables
 // why doing this in Layout instead of GlobalStyles: https://github.com/withastro/astro/issues/6728#issuecomment-1502203757
-const configHue = siteConfig.themeColor.hue;
+const configHue = siteConfig.themeColor.hue
 if (!banner || typeof banner !== 'string' || banner.trim() === '') {
-	banner = siteConfig.banner.src;
+  banner = siteConfig.banner.src
 }
 
 // TODO don't use post cover as banner for now
-banner = siteConfig.banner.src;
+banner = siteConfig.banner.src
 
-const enableBanner = siteConfig.banner.enable;
+const enableBanner = siteConfig.banner.enable
 
-let pageTitle;
+let pageTitle
 if (title) {
-	pageTitle = `${title} - ${siteConfig.title}`;
+  pageTitle = `${title} - ${siteConfig.title}`
 } else {
-	pageTitle = `${siteConfig.title} - ${siteConfig.subtitle}`;
+  pageTitle = `${siteConfig.title} - ${siteConfig.subtitle}`
 }
 
-const favicons: Favicon[] = siteConfig.favicon.length > 0 ? siteConfig.favicon : defaultFavicons
+const favicons: Favicon[] =
+  siteConfig.favicon.length > 0 ? siteConfig.favicon : defaultFavicons
 
 const siteLang = siteConfig.lang.replace('_', '-')
-
 ---
 
 <!DOCTYPE html>

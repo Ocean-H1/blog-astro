@@ -1,12 +1,12 @@
 ---
-import { SERVER_URL } from "@constants/constants";
+import { SERVER_URL } from '@constants/constants'
 
 type Props = {
   class?: string
   pathName?: string
 }
 const className = Astro.props.class
-const pathName = Astro.props.pathName || Astro.url.pathname.replace(/\/$/,'')
+const pathName = Astro.props.pathName || Astro.url.pathname.replace(/\/$/, '')
 ---
 <div class:list={[className, "pageview-count"]}>
   <slot name="icon"></slot>

@@ -1,24 +1,23 @@
 ---
-import Layout from "./Layout.astro";
-import Navbar from "@components/Navbar.astro";
-import SideBar from "@components/widget/SideBar.astro";
-import Footer from "@components/Footer.astro";
-import BackToTop from "@components/control/BackToTop.astro";
-import CommentWaline from "@components/CommentWaline.astro";
+import Layout from './Layout.astro'
+import Navbar from '@components/Navbar.astro'
+import SideBar from '@components/widget/SideBar.astro'
+import Footer from '@components/Footer.astro'
+import BackToTop from '@components/control/BackToTop.astro'
+import CommentWaline from '@components/CommentWaline.astro'
 // import {siteConfig} from "@/config";
 // import {pathsEqual} from "@utils/url-utils";
 
 interface Props {
-    title?: string;
-    banner?: string;
-    description?: string;
-    isBlog?: boolean
+  title?: string
+  banner?: string
+  description?: string
+  isBlog?: boolean
 }
 
 const { title, banner, description, isBlog = false } = Astro.props
 // const isHomePage = pathsEqual(Astro.url.pathname, '/')
 // const enableBanner = siteConfig.banner.enable
-
 ---
 
 <Layout title={title} banner={banner} description={description}>
