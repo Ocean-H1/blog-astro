@@ -9,7 +9,7 @@ import { LinkPreset } from './types/config'
 export const siteConfig: SiteConfig = {
   title: 'Ocean Han',
   subtitle: 'Blog',
-  lang: 'en', // 'en', 'zh_CN', 'zh_TW', 'ja', 'ko'
+  lang: 'zh_CN', // 'en', 'zh_CN', 'zh_TW', 'ja', 'ko'
   themeColor: {
     hue: 250, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
     fixed: false, // Hide the theme color picker for visitors
@@ -34,8 +34,9 @@ export const navBarConfig: NavBarConfig = {
     LinkPreset.Home,
     LinkPreset.Archive,
     LinkPreset.About,
+    LinkPreset.MessageBoard,
     {
-      name: 'Star',
+      name: 'Repository',
       url: 'https://github.com/Ocean-H1/blog-astro', // Internal links should not include the base path, as it is automatically added
       external: true, // Show an external link icon and will open in a new tab
     },
