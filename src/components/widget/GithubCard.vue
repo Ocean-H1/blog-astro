@@ -28,62 +28,62 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { Icon } from "@iconify/vue";
-import { nextTick, onMounted, ref } from "vue";
+import { Icon } from '@iconify/vue'
+import { nextTick, onMounted, ref } from 'vue'
 
-const githubRef = ref();
-const top = ref<string>("-250px");
-const animationID = ref<number>(0);
-const isShow = ref<boolean>(false);
-let num = -230;
+const githubRef = ref()
+const top = ref<string>('-250px')
+const animationID = ref<number>(0)
+const isShow = ref<boolean>(false)
+let num = -230
 onMounted(async () => {
-  await nextTick();
-  animation();
-});
+  await nextTick()
+  animation()
+})
 // 打开动画
 const animation = () => {
   if (num < 20) {
-    num += 10;
-    top.value = `${num}px`;
+    num += 10
+    top.value = `${num}px`
     // 请求动画帧，即屏幕刷新的时候执行回调函数
-    animationID.value = requestAnimationFrame(animation); // 继续执行该函数
+    animationID.value = requestAnimationFrame(animation) // 继续执行该函数
   } else {
-    githubRef.value.style.cursor = "";
-    isShow.value = true;
+    githubRef.value.style.cursor = ''
+    isShow.value = true
     if (animationID.value) {
-      cancelAnimationFrame(animationID.value);
+      cancelAnimationFrame(animationID.value)
     }
   }
-};
+}
 // 关闭动画
 const closeAnimation = () => {
   // debugger
   if (num > -185) {
-    num -= 10;
-    top.value = `${num}px`;
+    num -= 10
+    top.value = `${num}px`
     // 请求动画帧，即屏幕刷新的时候执行回调函数
-    animationID.value = requestAnimationFrame(closeAnimation); // 继续执行该函数
+    animationID.value = requestAnimationFrame(closeAnimation) // 继续执行该函数
   } else {
-    githubRef.value.style.cursor = "pointer";
-    isShow.value = false;
+    githubRef.value.style.cursor = 'pointer'
+    isShow.value = false
     if (animationID.value) {
-      cancelAnimationFrame(animationID.value);
+      cancelAnimationFrame(animationID.value)
     }
   }
-};
+}
 
 // 被隐藏时点击打开
 const open = () => {
   if (!isShow.value) {
-    console.log("open");
-    animation();
+    console.log('open')
+    animation()
   }
-};
+}
 
 // 关闭弹窗
 const close = () => {
-  closeAnimation();
-};
+  closeAnimation()
+}
 </script>
 <style lang="scss" scoped>
 #github-container {
