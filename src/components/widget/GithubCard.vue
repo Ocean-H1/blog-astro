@@ -4,12 +4,7 @@
     <div class="triangle"></div>
     <div id="success-box">
       <div class="dot" title="关闭" @click="close">
-        <Icon
-          icon="material-symbols:close"
-          class-name="icon-guanbi2"
-          color="#fff"
-          width="25"
-        ></Icon>
+        <Icon icon="material-symbols:close" class-name="icon-guanbi2" color="#fff" width="25"></Icon>
       </div>
       <div class="face">
         <Icon icon="fa6-brands:github" width="35" height="35" />
@@ -17,73 +12,71 @@
       <div class="shadow scale"></div>
       <div class="message">
         <h1 class="alert">求star</h1>
-        <p class="tips">开源不易，喜欢的点个star吧</p>
+        <p class="tips">开源不易，喜欢请点个star吧</p>
       </div>
       <button class="button-box">
-        <a href="https://github.com/Ocean-H1/blog-astro" target="_blank"
-          >star</a
-        >
+        <a href="https://github.com/Ocean-H1/blog-astro" target="_blank">star</a>
       </button>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-import { Icon } from "@iconify/vue";
-import { nextTick, onMounted, ref } from "vue";
+import { Icon } from '@iconify/vue'
+import { nextTick, onMounted, ref } from 'vue'
 
-const githubRef = ref();
-const top = ref<string>("-250px");
-const animationID = ref<number>(0);
-const isShow = ref<boolean>(false);
-let num = -230;
+const githubRef = ref()
+const top = ref<string>('-250px')
+const animationID = ref<number>(0)
+const isShow = ref<boolean>(false)
+let num = -230
 onMounted(async () => {
-  await nextTick();
-  animation();
-});
+  await nextTick()
+  animation()
+})
 // 打开动画
 const animation = () => {
   if (num < 20) {
-    num += 10;
-    top.value = `${num}px`;
+    num += 10
+    top.value = `${num}px`
     // 请求动画帧，即屏幕刷新的时候执行回调函数
-    animationID.value = requestAnimationFrame(animation); // 继续执行该函数
+    animationID.value = requestAnimationFrame(animation) // 继续执行该函数
   } else {
-    githubRef.value.style.cursor = "";
-    isShow.value = true;
+    githubRef.value.style.cursor = ''
+    isShow.value = true
     if (animationID.value) {
-      cancelAnimationFrame(animationID.value);
+      cancelAnimationFrame(animationID.value)
     }
   }
-};
+}
 // 关闭动画
 const closeAnimation = () => {
   // debugger
   if (num > -185) {
-    num -= 10;
-    top.value = `${num}px`;
+    num -= 10
+    top.value = `${num}px`
     // 请求动画帧，即屏幕刷新的时候执行回调函数
-    animationID.value = requestAnimationFrame(closeAnimation); // 继续执行该函数
+    animationID.value = requestAnimationFrame(closeAnimation) // 继续执行该函数
   } else {
-    githubRef.value.style.cursor = "pointer";
-    isShow.value = false;
+    githubRef.value.style.cursor = 'pointer'
+    isShow.value = false
     if (animationID.value) {
-      cancelAnimationFrame(animationID.value);
+      cancelAnimationFrame(animationID.value)
     }
   }
-};
+}
 
 // 被隐藏时点击打开
 const open = () => {
   if (!isShow.value) {
-    console.log("open");
-    animation();
+    console.log('open')
+    animation()
   }
-};
+}
 
 // 关闭弹窗
 const close = () => {
-  closeAnimation();
-};
+  closeAnimation()
+}
 </script>
 <style lang="scss" scoped>
 #github-container {
@@ -118,6 +111,7 @@ h1 {
 
 .green {
   color: #4ec07d;
+
   a {
     text-decoration: none;
   }
@@ -152,6 +146,7 @@ button,
   position: absolute;
   top: 4%;
   right: 6%;
+
   .icon-guanbi2 {
     &:hover {
       color: #c9c9c9;
@@ -177,7 +172,7 @@ button,
   left: 39.5%;
   z-index: 2;
   animation: bounce 1s ease-in infinite;
-  color: var(--enter-btn-bg-hover);
+  color: var(--enter-btn-bg-active);
 }
 
 .face2 {
@@ -255,6 +250,7 @@ button,
   text-align: center;
   height: 40%;
   top: 47%;
+
   .tips {
     margin-top: -5px;
     font-size: 0.8em;
@@ -276,6 +272,7 @@ button,
   border: none;
   box-shadow: 2px 2px 10px rgba(119, 119, 119, 0.5);
   transition: all 0.5s ease-in-out;
+
   a {
     letter-spacing: 2px;
     font-size: 16px;
@@ -287,6 +284,7 @@ button,
     justify-content: center;
   }
 }
+
 .button-box:hover {
   background: #efefef;
   transform: scale(1.05);
@@ -298,32 +296,39 @@ button,
     transform: translateY(-10px);
   }
 }
+
 @keyframes scale {
   50% {
     transform: scale(0.9);
   }
 }
+
 @keyframes roll {
   0% {
     transform: rotate(0deg);
     left: 25%;
   }
+
   50% {
     left: 60%;
     transform: rotate(168deg);
   }
+
   100% {
     transform: rotate(0deg);
     left: 25%;
   }
 }
+
 @keyframes move {
   0% {
     left: 25%;
   }
+
   50% {
     left: 60%;
   }
+
   100% {
     left: 25%;
   }
