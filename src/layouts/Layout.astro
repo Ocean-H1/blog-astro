@@ -5,17 +5,18 @@ import '@fontsource/roboto/500.css'
 import '@fontsource/roboto/700.css'
 import ImageWrapper from '@components/misc/ImageWrapper.astro'
 
-import { pathsEqual } from '@utils/url-utils'
-import ConfigCarrier from '@components/ConfigCarrier.astro'
 import { profileConfig, siteConfig } from '@/config'
-import { type Favicon } from '../types/config'
-import { defaultFavicons } from '../constants/icon'
+import ConfigCarrier from '@components/ConfigCarrier.astro'
+import GithubCard from '@components/widget/GithubCard.vue'
+import { pathsEqual } from '@utils/url-utils'
 import {
-  LIGHT_MODE,
-  DARK_MODE,
   AUTO_MODE,
+  DARK_MODE,
   DEFAULT_THEME,
+  LIGHT_MODE,
 } from '../constants/constants'
+import { defaultFavicons } from '../constants/icon'
+import type { Favicon } from '../types/config'
 import { url } from '../utils/url-utils'
 
 interface Props {
@@ -111,15 +112,17 @@ const siteLang = siteConfig.lang.replace('_', '-')
 
 	</head>
 	<body class=" min-h-screen transition " class:list={[{"is-home": isHomePage, "enable-banner": enableBanner}]}>
+
 		<ConfigCarrier></ConfigCarrier>
 		<GlobalStyles>
-		<div id="banner-wrapper" class="absolute w-full">
-			<ImageWrapper id="boxtest" alt="Banner image of the blog" class:list={["object-center object-cover h-full", {"hidden": !siteConfig.banner.enable}]}
-					  src={siteConfig.banner.src}
-			>
-			</ImageWrapper>
-		</div>
-		<slot />
+      <GithubCard client:load />
+      <div id="banner-wrapper" class="absolute w-full">
+        <ImageWrapper id="boxtest" alt="Banner image of the blog" class:list={["object-center object-cover h-full", {"hidden": !siteConfig.banner.enable}]}
+              src={siteConfig.banner.src}
+        >
+        </ImageWrapper>
+      </div>
+      <slot />
 		</GlobalStyles>
 	</body>
 </html>

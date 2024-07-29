@@ -32,9 +32,11 @@
       "@/*": [
         "src/*"
       ]
-    }
+    },
+    "jsx": "preserve"
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "src/**/*.vue"
   ]
 }
