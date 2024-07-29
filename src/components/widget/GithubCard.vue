@@ -12,7 +12,7 @@
         ></Icon>
       </div>
       <div class="face">
-        <Icon icon="fa6-brands:github" color="green" width="35" height="35" />
+        <Icon icon="fa6-brands:github" width="35" height="35" />
       </div>
       <div class="shadow scale"></div>
       <div class="message">
@@ -28,62 +28,62 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue'
-import { nextTick, onMounted, ref } from 'vue'
+import { Icon } from "@iconify/vue";
+import { nextTick, onMounted, ref } from "vue";
 
-const githubRef = ref()
-const top = ref<string>('-250px')
-const animationID = ref<number>(0)
-const isShow = ref<boolean>(false)
-let num = -230
+const githubRef = ref();
+const top = ref<string>("-250px");
+const animationID = ref<number>(0);
+const isShow = ref<boolean>(false);
+let num = -230;
 onMounted(async () => {
-  await nextTick()
-  animation()
-})
+  await nextTick();
+  animation();
+});
 // 打开动画
 const animation = () => {
   if (num < 20) {
-    num += 10
-    top.value = `${num}px`
+    num += 10;
+    top.value = `${num}px`;
     // 请求动画帧，即屏幕刷新的时候执行回调函数
-    animationID.value = requestAnimationFrame(animation) // 继续执行该函数
+    animationID.value = requestAnimationFrame(animation); // 继续执行该函数
   } else {
-    githubRef.value.style.cursor = ''
-    isShow.value = true
+    githubRef.value.style.cursor = "";
+    isShow.value = true;
     if (animationID.value) {
-      cancelAnimationFrame(animationID.value)
+      cancelAnimationFrame(animationID.value);
     }
   }
-}
+};
 // 关闭动画
 const closeAnimation = () => {
   // debugger
   if (num > -185) {
-    num -= 10
-    top.value = `${num}px`
+    num -= 10;
+    top.value = `${num}px`;
     // 请求动画帧，即屏幕刷新的时候执行回调函数
-    animationID.value = requestAnimationFrame(closeAnimation) // 继续执行该函数
+    animationID.value = requestAnimationFrame(closeAnimation); // 继续执行该函数
   } else {
-    githubRef.value.style.cursor = 'pointer'
-    isShow.value = false
+    githubRef.value.style.cursor = "pointer";
+    isShow.value = false;
     if (animationID.value) {
-      cancelAnimationFrame(animationID.value)
+      cancelAnimationFrame(animationID.value);
     }
   }
-}
+};
 
 // 被隐藏时点击打开
 const open = () => {
   if (!isShow.value) {
-    console.log('open')
-    animation()
+    console.log("open");
+    animation();
   }
-}
+};
 
 // 关闭弹窗
 const close = () => {
-  closeAnimation()
-}
+  closeAnimation();
+};
 </script>
 <style lang="scss" scoped>
 #github-container {
@@ -99,7 +99,7 @@ const close = () => {
     width: 0;
     height: 0;
     border: 14px solid;
-    border-color: transparent transparent #b0db7d transparent;
+    border-color: transparent transparent var(--enter-btn-bg-active) transparent;
     right: 50%;
     top: -13%;
     transform: translate(50%, 0);
@@ -142,7 +142,7 @@ button,
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom right, #b0db7d 40%, #99dbb4 100%);
+  background-color: var(--enter-btn-bg-active);
   border-radius: 20px;
   box-shadow: 5px 5px 20px rgba(203, 205, 211, 0.1);
   perspective: 40px;
@@ -177,6 +177,7 @@ button,
   left: 39.5%;
   z-index: 2;
   animation: bounce 1s ease-in infinite;
+  color: var(--enter-btn-bg-hover);
 }
 
 .face2 {
@@ -264,7 +265,8 @@ button,
 
 .button-box {
   position: absolute;
-  background: #fcfcfc;
+  background-color: var(--btn-regular-bg);
+  color: var(--btn-content);
   width: 50%;
   height: 15%;
   border-radius: 20px;
