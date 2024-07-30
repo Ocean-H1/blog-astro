@@ -54,3 +54,47 @@ console.log(Object.prototype.toString.call(new Date));//[object Date]
 console.log(Object.prototype.toString.call(/\d/));//[object RegExp]
 ```
 
+## 3.判断奇偶数
+```typescript
+/**
+ * 判断是否是奇数
+ */
+function isOdd(n: number) {
+  return !!(n%2)
+}
+```
+
+## 4.使用元组生成联合类型
+```typescript
+// as count 将 string[]类型变成元组类型
+const colors = ['♠','♣','♦','♥'] as count;
+const values = [
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '10',
+  'J',
+  'Q',
+  'K',
+  'A',
+] as count;
+
+// 生成联合类型
+type Values = typeof values[number];
+type Colors = typeof colors[number];
+
+function createCard(value: Values, color: Colors){}
+```
+
+## 5.判断一个函数是否标记async
+
+```ts
+function isAsyncFunc(func: Function) {
+  return Object.prototype.toString.call(func) === '[object AsyncFunction]';
+}
+```
