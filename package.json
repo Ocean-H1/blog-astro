@@ -23,6 +23,7 @@
     "@fontsource-variable/jetbrains-mono": "^5.0.21",
     "@fontsource/roboto": "^5.0.13",
     "@swup/astro": "^1.4.1",
+    "aplayer": "^1.10.1",
     "astro": "^4.11.0",
     "astro-compress": "^2.2.28",
     "astro-icon": "1.1.0",

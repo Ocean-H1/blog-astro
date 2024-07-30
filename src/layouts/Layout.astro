@@ -8,6 +8,7 @@ import ImageWrapper from '@components/misc/ImageWrapper.astro'
 import { profileConfig, siteConfig } from '@/config'
 import ConfigCarrier from '@components/ConfigCarrier.astro'
 import GithubCard from '@components/widget/GithubCard.vue'
+import MetingPlayer from '@components/widget/MetingPlayer.vue'
 import { pathsEqual } from '@utils/url-utils'
 import {
   AUTO_MODE,
@@ -123,6 +124,7 @@ const siteLang = siteConfig.lang.replace('_', '-')
         </ImageWrapper>
       </div>
       <slot />
+      <MetingPlayer client:load />
 		</GlobalStyles>
 	</body>
 </html>
