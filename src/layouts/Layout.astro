@@ -90,15 +90,23 @@ const siteLang = siteConfig.lang.replace('_', '-')
 			switch (theme) {
 				case LIGHT_MODE:
 					document.documentElement.classList.remove('dark');
+          // fit waline
+          document.documentElement.removeAttribute('data-theme')
 					break
 				case DARK_MODE:
 					document.documentElement.classList.add('dark');
+          // fit waline
+          document.documentElement.setAttribute('data-theme', 'dark')
 					break
 				case AUTO_MODE:
 					if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
 						document.documentElement.classList.add('dark');
+            // fit waline
+            document.documentElement.setAttribute('data-theme', 'dark')
 					} else {
 						document.documentElement.classList.remove('dark');
+            // fit waline
+            document.documentElement.removeAttribute('data-theme')
 					}
 			}
 		</script>

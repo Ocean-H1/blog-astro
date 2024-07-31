@@ -4,7 +4,12 @@
     <div class="triangle"></div>
     <div id="success-box">
       <div class="dot" title="关闭" @click="close">
-        <Icon icon="material-symbols:close" class-name="icon-guanbi2" color="#fff" width="25"></Icon>
+        <Icon
+          icon="material-symbols:close"
+          class-name="icon-guanbi2"
+          color="#fff"
+          width="25"
+        ></Icon>
       </div>
       <div class="face">
         <Icon icon="fa6-brands:github" width="35" height="35" />
@@ -15,7 +20,9 @@
         <p class="tips">开源不易，喜欢请点个star吧</p>
       </div>
       <button class="button-box">
-        <a href="https://github.com/Ocean-H1/blog-astro" target="_blank">star</a>
+        <a href="https://github.com/Ocean-H1/blog-astro" target="_blank"
+          >star</a
+        >
       </button>
     </div>
   </div>

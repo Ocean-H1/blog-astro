@@ -1,6 +1,6 @@
 <template>
   <div class="MetingPlayer">
-    <Meting server="netease" mid="7324368135" type="playlist" auto="https://music.163.com/#/playlist?id=7324368135" order="random" mini fixed />
+    <Meting server="netease" mid="7324368135" type="playlist" auto="https://music.163.com/#/playlist?id=7324368135" order="random" autoplay mini fixed />
   </div>
 </template>
 
