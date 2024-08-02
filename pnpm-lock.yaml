@@ -54,6 +54,9 @@ importers:
       astro-icon:
         specifier: 1.1.0
         version: 1.1.0
+      bilibili-bangumi-component:
+        specifier: ^0.3.0
+        version: 0.3.0
       colorjs.io:
         specifier: ^0.5.0
         version: 0.5.0
@@ -2086,6 +2089,9 @@ packages:
 
   base-64@1.0.0:
     resolution: {integrity: sha512-kwDPIFCGx0NZHog36dj+tHiwP4QMzsZ3AgMViUBKI0+V5n4U0ufTCUMhnQ04diaRI8EX/QcPfql7zlhZ7j4zgg==}
+
+  bilibili-bangumi-component@0.3.0:
+    resolution: {integrity: sha512-fgnvsXjpRsRBwxXi9H8nAsPQZBSUbHWWr299/INUDY8Qi07oOfDT850WamVGTN3cw3NWj5PYvvY4YpMGoPqdow==}
 
   binary-extensions@2.3.0:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
@@ -7624,6 +7630,8 @@ snapshots:
   balloon-css@0.5.2: {}
 
   base-64@1.0.0: {}
+
+  bilibili-bangumi-component@0.3.0: {}
 
   binary-extensions@2.3.0: {}
 

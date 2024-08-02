@@ -35,6 +35,7 @@ export const navBarConfig: NavBarConfig = {
     LinkPreset.Archive,
     LinkPreset.About,
     LinkPreset.MessageBoard,
+    LinkPreset.FavoriteAnime,
   ],
 }
 

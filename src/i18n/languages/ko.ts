@@ -37,4 +37,5 @@ export const ko: Translation = {
   [Key.publishedAt]: '게시일',
   [Key.license]: '라이선스',
   [Key.lastModified]: '업 데이트 시간',
+  [Key.favoriteAnime]: '만화',
 }

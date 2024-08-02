@@ -19,4 +19,8 @@ export const LinkPresets: { [key in LinkPreset]: NavBarLink } = {
     name: i18n(I18nKey.messageBoard),
     url: '/messageBoard/',
   },
+  [LinkPreset.FavoriteAnime]: {
+    name: i18n(I18nKey.favoriteAnime),
+    url: '/favoriteAnime/',
+  },
 }

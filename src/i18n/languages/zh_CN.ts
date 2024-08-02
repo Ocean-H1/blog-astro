@@ -37,4 +37,5 @@ export const zh_CN: Translation = {
   [Key.publishedAt]: '发布于',
   [Key.license]: '许可协议',
   [Key.lastModified]: '最后修改时间',
+  [Key.favoriteAnime]: '追番',
 }
