@@ -1,0 +1,160 @@
+---
+---
+
+<!-- oh-my-live2d 看板娘 -->
+<script>
+  import { loadOml2d } from 'oh-my-live2d'
+  
+  loadOml2d({
+    dockedPosition: 'right',
+    models: [
+      {
+        path: 'https://cdn.jsdelivr.net/gh/Ocean-H1/live2d-models/models/star-rail/pom/model3.json',  
+        position: [-10, 20],
+        scale: 0.3,
+      },
+    ],
+  })
+</script>
+
+<!-- https://github.com/orgs/swup/discussions/939  暂时固定样式 -->
+<style id="oml2d-global-style" is:global>
+  @keyframes oml2d-shake-tips{
+    0% {
+      transform: translate(-50%, 5%) scale(0.99);
+    }
+    50% {
+   
+      transform: translate(-50%, 0%) scale(1);
+    }
+    100% {
+      transform: translate(-50%, 5%) scale(0.99);
+    }
+  }
+  
+  @keyframes oml2d-stage-slide-in {
+    from {
+      transform: translateY(130%);
+    }
+    to {
+      transform: translateY(0%);
+    }
+  }
+  
+  @keyframes oml2d-stage-slide-out {
+    from {
+      transform: translateY(0%);
+    }
+    to {
+      transform: translateY(130%);
+    }
+  }
+  
+  @keyframes oml2d-display-tips {
+    0% {
+      opacity: 0;
+      visibility: hidden;
+    }
+    100% {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  
+  @keyframes oml2d-hidden-tips {
+    0% {
+      opacity: 1;
+      visibility: visible;
+    }
+    100% {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  @keyframes oml2d-loading-rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .oml2d-icon {
+    width: 1em; 
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+  }
+  
+  .oml2d-loading{
+    animation-name: oml2d-loading-rotate;
+    animation-duration: 600ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+  .oml2d-menus-item {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    align-items: center;
+    transition: all 300ms;
+    color: #38B0DE;
+    cursor: pointer;
+    background-color: #fff;
+  }
+  
+  .oml2d-menus-item:hover {
+    background-color: #38B0DE;
+    color: #fff;
+    box-shadow: 0 0 5px #000;
+  }
+  
+  #oml2d-menus .oml2d-menus-item:not(:last-child) {
+    margin-bottom: 10px;
+  }
+  
+  @keyframes oml2d-status-bar-left-slide-out {
+    0% {
+      transform: translateX(-8%);
+    }
+    100% {
+      transform: translateX(-120%);
+    }
+  }
+  
+  
+  @keyframes oml2d-status-bar-left-slide-in {
+    0% {
+      transform: translateX(-120%);
+    }
+    100% {
+      transform: translateX(-8%);
+    }
+  }
+
+  @keyframes oml2d-status-bar-right-slide-out {
+    0% {
+      transform: translateX(8%);
+    }
+    100% {
+      transform: translateX(120%);
+    }
+  }
+  
+  
+  @keyframes oml2d-status-bar-right-slide-in {
+    0% {
+      transform: translateX(120%);
+    }
+    100% {
+      transform: translateX(8%);
+    }
+  }
+</style>

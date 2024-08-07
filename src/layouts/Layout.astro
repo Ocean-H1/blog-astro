@@ -8,7 +8,7 @@ import ImageWrapper from '@components/misc/ImageWrapper.astro'
 import { profileConfig, siteConfig } from '@/config'
 import ConfigCarrier from '@components/ConfigCarrier.astro'
 import GithubCard from '@components/widget/GithubCard.vue'
-import Live2dWidget from '@components/widget/Live2dWidget.vue'
+import Live2dWidget from '@components/widget/Live2dWidget.astro'
 import MetingPlayer from '@components/widget/MetingPlayer.vue'
 import { pathsEqual } from '@utils/url-utils'
 import {
@@ -134,8 +134,8 @@ const siteLang = siteConfig.lang.replace('_', '-')
       </div>
       <slot />
       <MetingPlayer client:load />
+      <Live2dWidget />
 		</GlobalStyles>
-    <Live2dWidget client:only="vue" />
 	</body>
 </html>
 <style is:global>
@@ -338,24 +338,6 @@ if (window.swup.hooks) {
 }
 
 </script>
-<!-- 看板娘组件 -->
-<!-- <script>
-  import { loadOml2d } from 'oh-my-live2d'
-  
-  const oml2d = loadOml2d({
-      dockedPosition: 'right',
-      models: [
-        {
-          path: 'https://live2d-models-api.vercel.app/model/1/model3.json',
-          position: [-10, 20],
-          scale: 0.3,
-        },
-      ],
-    })
-    console.log(oml2d.version) // 当前组件版本号
-    console.log(oml2d.modelIndex) // 当前模型索引值
-    console.log(oml2d.options) // 当前配置选项
-</script> -->
 
 <style is:global lang="stylus">
 #banner-wrapper
