@@ -20,7 +20,7 @@ export default function Calendar() {
     <FullCalendar
       plugins={[timeGridPlugin, googleCalendarPlugin]}
       initialView='timeGridWeek'
-      weekends={false}
+      weekends={true}
       events={events}
       eventContent={renderEventContent}
       googleCalendarApiKey={GOOGLE_CALENDAR_APIKEY}
