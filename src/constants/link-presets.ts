@@ -23,4 +23,8 @@ export const LinkPresets: { [key in LinkPreset]: NavBarLink } = {
     name: i18n(I18nKey.favoriteAnime),
     url: '/favoriteAnime/',
   },
+  [LinkPreset.Schedule]: {
+    name: i18n(I18nKey.schedule),
+    url: '/schedule/',
+  },
 }

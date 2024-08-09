@@ -38,4 +38,5 @@ export const zh_CN: Translation = {
   [Key.license]: '许可协议',
   [Key.lastModified]: '最后修改时间',
   [Key.favoriteAnime]: '追番',
+  [Key.schedule]: '日程',
 }

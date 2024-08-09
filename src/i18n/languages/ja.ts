@@ -38,4 +38,5 @@ export const ja: Translation = {
   [Key.license]: 'ライセンス',
   [Key.lastModified]: '更新された',
   [Key.favoriteAnime]: '好きなアニメ',
+  [Key.schedule]: 'スケジュール',
 }
