@@ -1,0 +1,50 @@
+---
+import I18nKey from '@i18n/i18nKey'
+import { i18n } from '@i18n/translation'
+import MainGridLayout from '@layouts/MainGridLayout.astro'
+---
+<MainGridLayout title={i18n(I18nKey.schedule)} description={i18n(I18nKey.schedule)}>
+  <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
+    <div class="card-base z-10 px-9 py-6 relative w-full ">
+        <div id="calendar"></div>
+    </div>
+  </div>
+</MainGridLayout>
+
+<script>
+import { Calendar } from '@fullcalendar/core'
+import googleCalendarPlugin from '@fullcalendar/google-calendar'
+import timeGridPlugin from '@fullcalendar/timegrid'
+import { GOOGEL_CALENDAR_ID, GOOGLE_CALENDAR_APIKEY } from '@/constants/blog.secret'
+
+const calendarEl = document.getElementById('calendar') as HTMLElement
+const calendar = new Calendar(calendarEl, {
+  height: '80vh',
+  plugins: [
+    googleCalendarPlugin,
+    timeGridPlugin 
+  ],
+  googleCalendarApiKey: GOOGLE_CALENDAR_APIKEY,
+  initialView: 'timeGridWeek',
+  events: {
+    googleCalendarId: GOOGEL_CALENDAR_ID,
+  },
+  headerToolbar: {
+    left: 'prev,next',
+    center: 'title',
+    right: 'timeGridWeek,timeGridDay' // user can switch between the two
+  },
+  eventClick(arg) {
+    arg.jsEvent.preventDefault()
+  },
+  eventContent(renderProps, createElement) {
+    const title = renderProps.event?.title
+    return createElement('div', {
+      class: 'fc-event-main-frame',
+      innerHTML: `<div class="fc-event-time">${renderProps.timeText}</div><div class="fc-event-title fc-sticky">${ title === 'undefined' ? 'Unavailable' : title}</div>`
+    })
+  },
+})
+
+calendar.render()
+</script>

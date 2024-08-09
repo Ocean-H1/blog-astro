@@ -1,3 +1,6 @@
+# secret Key
+*.secret.*
+
 # build output
 dist/
 

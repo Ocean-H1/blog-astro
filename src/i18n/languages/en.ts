@@ -38,4 +38,5 @@ export const en: Translation = {
   [Key.license]: 'License',
   [Key.lastModified]: 'LastModified',
   [Key.favoriteAnime]: 'Favorite Anime',
+  [Key.schedule]: 'Schedule',
 }
