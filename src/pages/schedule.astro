@@ -1,4 +1,5 @@
 ---
+import Calendar from '@components/Calendar'
 import I18nKey from '@i18n/i18nKey'
 import { i18n } from '@i18n/translation'
 import MainGridLayout from '@layouts/MainGridLayout.astro'
@@ -6,12 +7,12 @@ import MainGridLayout from '@layouts/MainGridLayout.astro'
 <MainGridLayout title={i18n(I18nKey.schedule)} description={i18n(I18nKey.schedule)}>
   <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
     <div class="card-base z-10 px-9 py-6 relative w-full ">
-        <div id="calendar"></div>
+        <Calendar client:load></Calendar>
     </div>
   </div>
 </MainGridLayout>
 
-<script>
+<!-- <script>
 import { Calendar } from '@fullcalendar/core'
 import googleCalendarPlugin from '@fullcalendar/google-calendar'
 import timeGridPlugin from '@fullcalendar/timegrid'
@@ -47,4 +48,4 @@ const calendar = new Calendar(calendarEl, {
 })
 
 calendar.render()
-</script>
+</script> -->
