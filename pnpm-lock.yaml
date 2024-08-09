@@ -1315,6 +1315,7 @@ packages:
     peerDependencies:
       '@fullcalendar/core': ~6.1.15
 
+<<<<<<< HEAD
   '@fullcalendar/react@6.1.15':
     resolution: {integrity: sha512-L0b9hybS2J4e7lq6G2CD4nqriyLEqOH1tE8iI6JQjAMTVh5JicOo5Mqw+fhU5bJ7hLfMw2K3fksxX3Ul1ssw5w==}
     peerDependencies:
@@ -1322,6 +1323,8 @@ packages:
       react: ^16.7.0 || ^17 || ^18 || ^19
       react-dom: ^16.7.0 || ^17 || ^18 || ^19
 
+=======
+>>>>>>> f79d629140315f81c2646bd2f608f428c8026e8a
   '@fullcalendar/timegrid@6.1.15':
     resolution: {integrity: sha512-61ORr3A148RtxQ2FNG7JKvacyA/TEVZ7z6I+3E9Oeu3dqTf6M928bFcpehRTIK6zIA6Yifs7BeWHgOE9dFnpbw==}
     peerDependencies:
@@ -6775,12 +6778,15 @@ snapshots:
     dependencies:
       '@fullcalendar/core': 6.1.15
 
+<<<<<<< HEAD
   '@fullcalendar/react@6.1.15(@fullcalendar/core@6.1.15)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@fullcalendar/core': 6.1.15
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
+=======
+>>>>>>> f79d629140315f81c2646bd2f608f428c8026e8a
   '@fullcalendar/timegrid@6.1.15(@fullcalendar/core@6.1.15)':
     dependencies:
       '@fullcalendar/core': 6.1.15
