@@ -84,7 +84,8 @@
   "pnpm": {
     "overrides": {
       "vite-imagetools": "^6.2.7",
-      "sharp": "^0.33.0"
+      "sharp": "^0.33.0",
+      "@iconify/tools": "^4.0.0"
     }
   }
 }
