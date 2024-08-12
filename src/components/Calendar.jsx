@@ -1,11 +1,9 @@
-import {
-  GOOGLE_CALENDAR_APIKEY,
-  GOOGLE_CALENDAR_ID,
-} from '@/constants/blog.secret'
 import googleCalendarPlugin from '@fullcalendar/google-calendar'
 import FullCalendar from '@fullcalendar/react'
 import timeGridPlugin from '@fullcalendar/timegrid'
 
+const GOOGLE_CALENDAR_ID = import.meta.env.PUBLIC_GOOGLE_CALENDAR_ID
+const GOOGLE_CALENDAR_APIKEY = import.meta.env.PUBLIC_GOOGLE_CALENDAR_APIKEY
 const events = {
   googleCalendarId: GOOGLE_CALENDAR_ID,
 }
