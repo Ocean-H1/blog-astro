@@ -36,7 +36,7 @@ export const navBarConfig: NavBarConfig = {
     LinkPreset.About,
     LinkPreset.MessageBoard,
     LinkPreset.FavoriteAnime,
-    LinkPreset.Schedule,
+    // LinkPreset.Schedule,
   ],
 }
 
