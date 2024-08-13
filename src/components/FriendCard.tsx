@@ -19,7 +19,7 @@ export default function FriendCard({
       try {
         const imgSrc = await loadImage(url, {
           defaultImageUrl:
-            'https://fastly.jsdelivr.net/gh/Ocean-H1/blog_image_bed/what_is_ts.png',
+            'https://fastly.jsdelivr.net/gh/Ocean-H1/blog_image_bed/xiaomai-avatar.jpg',
         })
         setAvatarSrc(imgSrc)
       } catch (error) {
