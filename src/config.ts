@@ -1,4 +1,5 @@
 import type {
+  FriendLinksItem,
   LicenseConfig,
   NavBarConfig,
   ProfileConfig,
@@ -36,6 +37,7 @@ export const navBarConfig: NavBarConfig = {
     LinkPreset.About,
     LinkPreset.MessageBoard,
     LinkPreset.FavoriteAnime,
+    LinkPreset.FriendLink,
     // LinkPreset.Schedule,
   ],
 }
@@ -70,3 +72,25 @@ export const licenseConfig: LicenseConfig = {
   name: 'CC BY-NC-SA 4.0',
   url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/',
 }
+
+export const friendLinksConfig: FriendLinksItem[] = [
+  {
+    nickname: 'Cai.',
+    link: 'https://www.awesomeboy.cn/',
+    bio: 'Talk is cheap.Show me your code.',
+    avatarURL:
+      'https://awesomeboy.oss-cn-chengdu.aliyuncs.com/img/202303071729440.jpg',
+  },
+  {
+    nickname: 'Aurora',
+    link: 'http://wei-z.top/',
+    bio: 'Aurora的个人博客',
+    avatarURL: 'http://wei-z.top/logo1.png',
+  },
+  {
+    nickname: '小关同学',
+    link: 'http://www.xiaoguantongxue.com/#/index',
+    bio: '小关同学の个人博客',
+    avatarURL: 'http://image.xiaoguantongxue.com/blog/static/favicon.ico',
+  },
+]

@@ -39,4 +39,5 @@ export const zh_CN: Translation = {
   [Key.lastModified]: '最后修改时间',
   [Key.favoriteAnime]: '追番',
   [Key.schedule]: '日程',
+  [Key.friendLink]: '友链',
 }

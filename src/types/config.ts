@@ -32,6 +32,7 @@ export enum LinkPreset {
   MessageBoard = 3,
   FavoriteAnime = 4,
   Schedule = 5,
+  FriendLink = 6,
 }
 
 export type NavBarLink = {
@@ -65,3 +66,10 @@ export type LIGHT_DARK_MODE =
   | typeof LIGHT_MODE
   | typeof DARK_MODE
   | typeof AUTO_MODE
+
+export type FriendLinksItem = {
+  link: string
+  nickname: string
+  avatarURL?: string
+  bio?: string
+}

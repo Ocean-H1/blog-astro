@@ -39,4 +39,5 @@ export const ko: Translation = {
   [Key.lastModified]: '업 데이트 시간',
   [Key.favoriteAnime]: '만화',
   [Key.schedule]: '일정',
+  [Key.friendLink]: '친절한 링크',
 }

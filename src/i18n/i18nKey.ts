@@ -2,6 +2,7 @@ enum I18nKey {
   home = 'home',
   about = 'about',
   schedule = 'schedule',
+  friendLink = 'friendLink',
   messageBoard = 'messageBoard',
   favoriteAnime = 'favoriteAnime',
   archive = 'archive',

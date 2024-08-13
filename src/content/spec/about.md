@@ -1,4 +1,4 @@
-# About
+# 关于
 欢迎访问我的博客，我主要在这里上传博客或记录一些有意思的东西，
 > 你可以通过邮箱联系我：oceanhhan@gmail.com  
 > 你可以查看我的日程表：[日程](https://www.oceanh.top/pages/schedule/)  

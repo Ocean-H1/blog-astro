@@ -39,4 +39,5 @@ export const en: Translation = {
   [Key.lastModified]: 'LastModified',
   [Key.favoriteAnime]: 'Favorite Anime',
   [Key.schedule]: 'Schedule',
+  [Key.friendLink]: 'Friend Link',
 }
