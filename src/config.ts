@@ -85,12 +85,14 @@ export const friendLinksConfig: FriendLinksItem[] = [
     nickname: 'Aurora',
     link: 'http://wei-z.top/',
     bio: 'Aurora的个人博客',
-    avatarURL: 'http://wei-z.top/logo1.png',
+    avatarURL:
+      'https://fastly.jsdelivr.net/gh/Ocean-H1/blog_image_bed/aurora-avatar.png',
   },
   {
     nickname: '小关同学',
     link: 'http://www.xiaoguantongxue.com/#/index',
     bio: '小关同学の个人博客',
-    avatarURL: 'http://image.xiaoguantongxue.com/blog/static/favicon.ico',
+    avatarURL:
+      'https://fastly.jsdelivr.net/gh/Ocean-H1/blog_image_bed/xiaoguan-avatar.png',
   },
 ]
