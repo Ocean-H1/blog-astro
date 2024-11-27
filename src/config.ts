@@ -95,4 +95,10 @@ export const friendLinksConfig: FriendLinksItem[] = [
     avatarURL:
       'https://fastly.jsdelivr.net/gh/Ocean-H1/blog_image_bed/xiaoguan-avatar.png',
   },
+  {
+    nickname: '辞辞',
+    link: 'https://youzi-ch.github.io/',
+    bio: '不知名的永劫高手',
+    avatarURL: 'https://youzi-ch.github.io/avatar/avatar.webp',
+  },
 ]
