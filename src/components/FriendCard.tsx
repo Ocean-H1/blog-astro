@@ -10,7 +10,7 @@ export default function FriendCard({
   link,
   nickname,
   avatarURL = '',
-  bio = 'Done is better than perfect.',
+  bio = `${nickname}的小站`,
 }: FriendCardProps) {
   const [avatarSrc, setAvatarSrc] = useState<string>('')
 
