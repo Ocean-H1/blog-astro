@@ -70,6 +70,7 @@
     "@iconify-json/fa6-solid": "^1.1.21",
     "@iconify-json/material-symbols": "^1.1.82",
     "@iconify-json/simple-icons": "^1.1.109",
+    "@iconify/react": "^5.0.2",
     "@iconify/svelte": "^4.0.2",
     "@iconify/vue": "^4.1.2",
     "@rollup/plugin-yaml": "^4.1.2",
@@ -77,6 +78,7 @@
     "@types/markdown-it": "^14.1.1",
     "@types/mdast": "^4.0.4",
     "@types/sanitize-html": "^2.11.0",
+    "less": "^4.2.1",
     "remark-github-admonitions-to-directives": "^1.0.5",
     "sass": "^1.77.6",
     "stylus": "^0.63.0"

@@ -33,6 +33,7 @@ export enum LinkPreset {
   FavoriteAnime = 4,
   Schedule = 5,
   FriendLink = 6,
+  Share = 7,
 }
 
 export type NavBarLink = {

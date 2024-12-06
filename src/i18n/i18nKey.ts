@@ -5,6 +5,7 @@ enum I18nKey {
   friendLink = 'friendLink',
   messageBoard = 'messageBoard',
   favoriteAnime = 'favoriteAnime',
+  share = 'share',
   archive = 'archive',
   search = 'search',
 

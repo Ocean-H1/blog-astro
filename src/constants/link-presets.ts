@@ -31,4 +31,8 @@ export const LinkPresets: { [key in LinkPreset]: NavBarLink } = {
     name: i18n(I18nKey.friendLink),
     url: '/friendLink/',
   },
+  [LinkPreset.Share]: {
+    name: i18n(I18nKey.share),
+    url: '/share/',
+  },
 }

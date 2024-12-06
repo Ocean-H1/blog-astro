@@ -40,4 +40,5 @@ export const ko: Translation = {
   [Key.favoriteAnime]: '만화',
   [Key.schedule]: '일정',
   [Key.friendLink]: '친절한 링크',
+  [Key.share]: '자원 공유',
 }

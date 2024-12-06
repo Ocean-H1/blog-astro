@@ -40,4 +40,5 @@ export const zh_TW: Translation = {
   [Key.favoriteAnime]: '追番',
   [Key.schedule]: '行程',
   [Key.friendLink]: '友鏈',
+  [Key.share]: '資源分享',
 }

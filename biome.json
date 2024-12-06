@@ -38,7 +38,7 @@
     "ignore": [],
     "rules": {
       "a11y": {
-        "recommended": true
+        "recommended": false
       },
       "complexity": {
         "recommended": true

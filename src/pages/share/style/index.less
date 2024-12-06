@@ -1,0 +1,123 @@
+@ActiveBgColor: #425aef;
+@ActiveColor: #fff;
+
+.share-container {
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+
+  .tabs {
+    width: 7.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 600;
+
+    &-item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      cursor: pointer;
+      border-radius: 0.4rem;
+      padding: 5px;
+      gap: 5px;
+
+      .icon {
+        width: 1em;
+        height: 100%;
+      }
+      .label {
+        flex: 1;
+        letter-spacing: 2px;
+      }
+
+      &:hover {
+        background-color: @ActiveBgColor;
+        color: @ActiveColor;
+      }
+
+      &.active {
+        background-color: @ActiveBgColor;
+        color: @ActiveColor;
+      }
+    }
+  }
+
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+
+    &-item {
+      width: 30%;
+      height: 100px;
+      cursor: pointer;
+      display: flex;
+      padding: 5px 10px;
+      gap: 1rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+
+      .cover {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+      .detail {
+        flex: 1;
+        max-width: 150px;
+        display: flex;
+        flex-direction: column;
+
+        .title {
+          font-size: 1.1rem;
+          font-weight: bold;
+        }
+
+        .multiline-ellipsis {
+          // 多行文本溢出
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          overflow: hidden;
+        }
+      }
+    }
+    &-item:hover {
+      border-color: transparent;
+      box-shadow: 0 5px 12px 4px rgba(0, 0, 0, 0.09);
+    }
+
+    &-empty {
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.5rem;
+      letter-spacing: 3px;
+    }
+  }
+
+  .loading {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+
+    &-icon {
+      width: 1rem;
+    }
+
+    &-label {
+      font-size: 1.5rem;
+      letter-spacing: 3px;
+    }
+  }
+}
