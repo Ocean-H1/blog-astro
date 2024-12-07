@@ -3,7 +3,7 @@
     <!-- 三角形 -->
     <div class="triangle"></div>
     <div id="success-box">
-      <div class="dot" title="关闭" @click="close">
+      <div class="dot" title="7天内不再显示" @click="close">
         <Icon
           icon="material-symbols:close"
           class-name="icon-guanbi2"
@@ -29,6 +29,7 @@
 </template>
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue'
+import dayjs from 'dayjs'
 import { nextTick, onMounted, ref } from 'vue'
 
 const githubRef = ref()
@@ -36,9 +37,15 @@ const top = ref<string>('-250px')
 const animationID = ref<number>(0)
 const isShow = ref<boolean>(false)
 let num = -230
+const storageKey = 'GCard-close-time'
 onMounted(async () => {
+  const now = dayjs()
+  const lastCloseTime = window.localStorage.getItem(storageKey) || ''
   await nextTick()
-  animation()
+  // 7天内不再显示
+  if (!lastCloseTime || now.diff(dayjs(lastCloseTime), 'day') > 7) {
+    animation()
+  }
 })
 // 打开动画
 const animation = () => {
@@ -83,6 +90,8 @@ const open = () => {
 // 关闭弹窗
 const close = () => {
   closeAnimation()
+  const now = dayjs()
+  window.localStorage.setItem(storageKey, now.format())
 }
 </script>
 <style lang="scss" scoped>
