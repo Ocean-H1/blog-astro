@@ -37,7 +37,8 @@ const top = ref<string>('-250px')
 const animationID = ref<number>(0)
 const isShow = ref<boolean>(false)
 let num = -230
-const storageKey = 'GCard-close-time'
+const storageKey = 'GITHUB_CARD_CLOSE_TIME'
+
 onMounted(async () => {
   const now = dayjs()
   const lastCloseTime = window.localStorage.getItem(storageKey) || ''
@@ -45,6 +46,10 @@ onMounted(async () => {
   // 7天内不再显示
   if (!lastCloseTime || now.diff(dayjs(lastCloseTime), 'day') > 7) {
     animation()
+  } else {
+    top.value = '-185px'
+    githubRef.value.style.cursor = 'pointer'
+    isShow.value = false
   }
 })
 // 打开动画
@@ -64,7 +69,6 @@ const animation = () => {
 }
 // 关闭动画
 const closeAnimation = () => {
-  // debugger
   if (num > -185) {
     num -= 10
     top.value = `${num}px`
