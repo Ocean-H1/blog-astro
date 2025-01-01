@@ -1,13 +1,13 @@
 /* This is a script to create a new post markdown file with front-matter */
 
-import fs from "fs"
-import path from "path"
+import fs from 'fs'
+import path from 'path'
 
 function getDate() {
   const today = new Date()
   const year = today.getFullYear()
-  const month = String(today.getMonth() + 1).padStart(2, "0")
-  const day = String(today.getDate()).padStart(2, "0")
+  const month = String(today.getMonth() + 1).padStart(2, '0')
+  const day = String(today.getDate()).padStart(2, '0')
 
   return `${year}-${month}-${day}`
 }
@@ -16,20 +16,22 @@ const args = process.argv.slice(2)
 
 if (args.length === 0) {
   console.error(`Error: No filename argument provided
-Usage: npm run new-post -- <filename>`)
+Usage: npm run new-post -- <category> <filename>`)
   process.exit(1) // Terminate the script and return error code 1
 }
 
-let fileName = args[0]
+const category = args[0]
+let fileName = args[1]
 
 // Add .md extension if not present
 const fileExtensionRegex = /\.(md|mdx)$/i
 if (!fileExtensionRegex.test(fileName)) {
-  fileName += ".md"
+  fileName += '.md'
 }
 
-const targetDir = "./src/content/posts/"
-const fullPath = path.join(targetDir, fileName)
+const targetDir = './src/content/posts/'
+const fullPath = path.join(targetDir, category, fileName)
+console.log(fullPath)
 
 if (fs.existsSync(fullPath)) {
   console.error(`Error：File ${fullPath} already exists `)
@@ -37,16 +39,16 @@ if (fs.existsSync(fullPath)) {
 }
 
 const content = `---
-title: ${args[0]}
+title: ${args[1]}
 published: ${getDate()}
 description: ''
 image: ''
 tags: []
-category: ''
+category: ${args[0]}
 draft: false 
 ---
 `
 
-fs.writeFileSync(path.join(targetDir, fileName), content)
+fs.writeFileSync(fullPath, content)
 
 console.log(`Post ${fullPath} created`)
