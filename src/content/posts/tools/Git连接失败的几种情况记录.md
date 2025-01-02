@@ -4,7 +4,7 @@ published: 2025-01-01
 description: 'Git连接失败的几种情况及解决方案记录'
 image: 'https://fastly.jsdelivr.net/gh/Ocean-H1/blog_image_bed/git.png'
 tags: [Git]
-category: tools
+category: 工具
 draft: false 
 ---
 

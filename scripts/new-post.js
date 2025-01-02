@@ -1,7 +1,7 @@
 /* This is a script to create a new post markdown file with front-matter */
 
-import fs from 'fs'
-import path from 'path'
+import fs from 'node:fs'
+import path from 'node:path'
 
 function getDate() {
   const today = new Date()
@@ -38,13 +38,22 @@ if (fs.existsSync(fullPath)) {
   process.exit(1)
 }
 
+const categoryMap = {
+  algorithm: '算法',
+  draft: '草稿',
+  frontend: '前端',
+  network: '计算机网络',
+  os: '操作系统',
+  tools: '工具',
+  other: '其他',
+}
 const content = `---
 title: ${args[1]}
 published: ${getDate()}
 description: ''
 image: ''
 tags: []
-category: ${args[0]}
+category: ${categoryMap[args[0]] || ''}
 draft: false 
 ---
 `
