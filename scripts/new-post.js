@@ -47,13 +47,22 @@ const categoryMap = {
   tools: '工具',
   other: '其他',
 }
+const coverMap = {
+  algorithm:
+    'https://fastly.jsdelivr.net/gh/Ocean-H1/blog_image_bed/leetcode.png',
+  frontend: 'https://fastly.jsdelivr.net/gh/Ocean-H1/blog_image_bed/bg-js.png',
+}
+
+const defaultCover =
+  'https://fastly.jsdelivr.net/gh/Ocean-H1/blog_image_bed/bg01.png'
+
 const content = `---
 title: ${args[1]}
 published: ${getDate()}
 description: ''
-image: ''
+image: ${coverMap[category] || defaultCover}
 tags: []
-category: ${categoryMap[args[0]] || ''}
+category: ${categoryMap[category] || category}
 draft: false 
 ---
 `
