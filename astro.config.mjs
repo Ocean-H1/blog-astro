@@ -14,6 +14,7 @@ import rehypeComponents from 'rehype-components' /* Render the custom directive 
 import rehypeKatex from 'rehype-katex'
 import rehypeSlug from 'rehype-slug'
 import remarkDirective from 'remark-directive' /* Handle directives */
+import remarkEmoji from 'remark-emoji'
 import remarkGithubAdmonitionsToDirectives from 'remark-github-admonitions-to-directives'
 import remarkMath from 'remark-math'
 import { AdmonitionComponent } from './src/plugins/rehype-component-admonition.mjs'
@@ -75,6 +76,7 @@ export default defineConfig({
       remarkDirective,
       parseDirectiveNode,
       remarkModifiedTime,
+      remarkEmoji,
     ],
     rehypePlugins: [
       rehypeKatex,
