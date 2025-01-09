@@ -57,6 +57,7 @@
     "remark-directive-rehype": "^0.4.2",
     "remark-emoji": "^5.0.1",
     "remark-math": "^6.0.0",
+    "remark-toc": "^9.0.0",
     "sanitize-html": "^2.13.0",
     "sharp": "^0.33.4",
     "svelte": "^4.2.18",
