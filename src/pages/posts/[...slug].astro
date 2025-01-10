@@ -1,21 +1,21 @@
 ---
-import { getCollection } from 'astro:content'
-import MainGridLayout from '@layouts/MainGridLayout.astro'
-import ImageWrapper from '../../components/misc/ImageWrapper.astro'
-import { Icon } from 'astro-icon/components'
-import PostMetadata from '../../components/PostMeta.astro'
-import { i18n } from '@i18n/translation'
-import I18nKey from '@i18n/i18nKey'
-import { getDir, getPostUrlBySlug } from '@utils/url-utils'
-import License from '@components/misc/License.astro'
-import { licenseConfig } from 'src/config'
-import Markdown from '@components/misc/Markdown.astro'
 import path from 'path'
-import { profileConfig } from '../../config'
-import { formatDateToYYYYMMDD } from '../../utils/date-utils'
+import { getCollection } from 'astro:content'
 import PageviewCount from '@components/PageviewCount.astro'
+import License from '@components/misc/License.astro'
+import Markdown from '@components/misc/Markdown.astro'
+import I18nKey from '@i18n/i18nKey'
+import { i18n } from '@i18n/translation'
+import MainGridLayout from '@layouts/MainGridLayout.astro'
+import { getDir, getPostUrlBySlug } from '@utils/url-utils'
+import { Icon } from 'astro-icon/components'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
+import { licenseConfig } from 'src/config'
+import PostMetadata from '../../components/PostMeta.astro'
+import ImageWrapper from '../../components/misc/ImageWrapper.astro'
+import { profileConfig } from '../../config'
+import { formatDateToYYYYMMDD } from '../../utils/date-utils'
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('posts', ({ data }) => {
@@ -28,7 +28,7 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props
-const { Content } = await entry.render()
+const { Content, headings } = await entry.render()
 
 const { remarkPluginFrontmatter } = await entry.render()
 
@@ -54,7 +54,7 @@ const jsonLd = {
 }
 const pathName = getPostUrlBySlug(entry?.slug).replace(/\/$/, '')
 ---
-<MainGridLayout banner={entry.data.image} title={entry.data.title} description={entry.data.description} isBlog>
+<MainGridLayout banner={entry.data.image} title={entry.data.title} description={entry.data.description} isBlog headings={headings}>
     <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
     <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative mb-4">
         <div id="post-container" class:list={["card-base z-10 px-6 md:px-9 pt-6 pb-4 relative w-full ",

@@ -15,9 +15,9 @@ import rehypeKatex from 'rehype-katex'
 import rehypeSlug from 'rehype-slug'
 import remarkDirective from 'remark-directive' /* Handle directives */
 import remarkEmoji from 'remark-emoji'
-import remarkToc from 'remark-toc'
 import remarkGithubAdmonitionsToDirectives from 'remark-github-admonitions-to-directives'
 import remarkMath from 'remark-math'
+import remarkToc from 'remark-toc'
 import { AdmonitionComponent } from './src/plugins/rehype-component-admonition.mjs'
 import { CardComponent } from './src/plugins/rehype-component-card.mjs'
 import { GithubCardComponent } from './src/plugins/rehype-component-github-card.mjs'
@@ -44,7 +44,7 @@ export default defineConfig({
     swup({
       theme: false,
       animationClass: 'transition-',
-      containers: ['#swup'],
+      containers: ['#swup', '#catalog'],
       smoothScrolling: true,
       cache: true,
       preload: true,
@@ -71,7 +71,7 @@ export default defineConfig({
   ],
   markdown: {
     remarkPlugins: [
-      [remarkToc, { heading: '目录'}],
+      [remarkToc, { heading: '目录' }],
       remarkMath,
       remarkReadingTime,
       remarkGithubAdmonitionsToDirectives,
