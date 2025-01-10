@@ -1,14 +1,18 @@
 ---
-import { Icon } from 'astro-icon/components'
+import { Icon } from "astro-icon/components";
 ---
 
 <!-- There can't be a filter on parent element, or it will break `fixed` -->
 <div class="back-to-top-wrapper hidden lg:block">
-    <div id="back-to-top-btn" class="back-to-top-btn hide flex items-center rounded-2xl overflow-hidden transition" onclick="backToTop()">
-        <button aria-label="Back to Top" class="btn-card h-[3.75rem] w-[3.75rem]">
-            <Icon name="material-symbols:keyboard-arrow-up-rounded" class="mx-auto"></Icon>
-        </button>
-    </div>
+  <div
+    id="back-to-top-btn"
+    class="back-to-top-btn hide flex items-center rounded-2xl overflow-hidden transition"
+    onclick="backToTop()"
+  >
+    <button aria-label="Back to Top" class="btn-card h-[3.75rem] w-[3.75rem]">
+      <Icon name="material-symbols:keyboard-arrow-up-rounded" class="mx-auto" />
+    </button>
+  </div>
 </div>
 
 <style lang="stylus">
@@ -18,6 +22,7 @@ import { Icon } from 'astro-icon/components'
     position: absolute
     right: 0
     top: 0
+    pointer-events: none
 
 .back-to-top-btn
     color: var(--primary)
@@ -25,10 +30,11 @@ import { Icon } from 'astro-icon/components'
     font-weight: bold
     border: none
     position: fixed
-    bottom: 15rem
+    bottom: 10rem
     opacity: 1
     cursor: pointer
     transform: translateX(5rem)
+    pointer-events: auto
     i
         font-size: 1.75rem
     &.hide
@@ -41,17 +47,7 @@ import { Icon } from 'astro-icon/components'
 </style>
 
 <script is:raw is:inline>
-function backToTop() {
-    window.scroll({ top: 0, behavior: 'smooth' });
-}
-
-function scrollFunction() {
-    let btn = document.getElementById('back-to-top-btn');
-    if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
-        btn.classList.remove('hide')
-    } else {
-        btn.classList.add('hide')
-    }
-}
-window.onscroll = scrollFunction
+  function backToTop() {
+    window.scroll({ top: 0, behavior: "smooth" });
+  }
 </script>

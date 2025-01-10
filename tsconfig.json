@@ -1,10 +1,10 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "moduleResolution": "node",
     "baseUrl": ".",
     "strictNullChecks": true,
-    "allowJs": true,
+    "allowJs": false,
+    "declaration": true,
     "plugins": [
       {
         "name": "@astrojs/ts-plugin"
@@ -32,12 +32,9 @@
       "@/*": [
         "src/*"
       ]
-    },
-    "jsx": "react-jsx",
-    "jsxImportSource": "react"
+    }
   },
   "include": [
-    "src/**/*",
-    "src/**/*.vue"
+    "src/**/*"
   ]
 }

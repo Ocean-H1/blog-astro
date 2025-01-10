@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.4.1/schema.json",
+  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
   "extends": [],
   "files": { "ignoreUnknown": true },
   "organizeImports": {
@@ -8,7 +8,7 @@
   "formatter": {
     "enabled": true,
     "formatWithErrors": false,
-    "ignore": [],
+    "ignore": ["src/config.ts"],
     "indentStyle": "space",
     "indentWidth": 2,
     "lineWidth": 80
@@ -20,7 +20,7 @@
     "formatter": {
       "quoteStyle": "single",
       "jsxQuoteStyle": "single",
-      "trailingComma": "all",
+      "trailingCommas": "all",
       "semicolons": "asNeeded",
       "arrowParentheses": "asNeeded"
     }
@@ -38,7 +38,7 @@
     "ignore": [],
     "rules": {
       "a11y": {
-        "recommended": false
+        "recommended": true
       },
       "complexity": {
         "recommended": true

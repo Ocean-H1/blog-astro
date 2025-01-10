@@ -13,7 +13,16 @@ export type SiteConfig = {
   banner: {
     enable: boolean
     src: string
-    position?: string
+    position?: 'top' | 'center' | 'bottom'
+    credit: {
+      enable: boolean
+      text: string
+      url?: string
+    }
+  }
+  toc: {
+    enable: boolean
+    depth: 1 | 2 | 3
   }
 
   favicon: Favicon[]
@@ -68,6 +77,20 @@ export type LIGHT_DARK_MODE =
   | typeof DARK_MODE
   | typeof AUTO_MODE
 
+export type BlogPostData = {
+  body: string
+  title: string
+  published: Date
+  description: string
+  tags: string[]
+  draft?: boolean
+  image?: string
+  category?: string
+  prevTitle?: string
+  prevSlug?: string
+  nextTitle?: string
+  nextSlug?: string
+}
 export type FriendLinksItem = {
   link: string
   nickname: string
