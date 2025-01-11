@@ -1,7 +1,9 @@
 # 🚧 WIP (work in progress)
 
 项目施工中...
-
+## 使用的模板
+ [Fuwari](https://github.com/saicaca/fuwari)
+ 
 ## To do list
 - [x] 音乐播放器
 - [x] 评论
@@ -23,4 +25,3 @@
 - [ ] 导航栏升级，支持下拉、嵌套
 - [ ] 部分样式改进
 
-使用的主题: [Fuwari](https://github.com/saicaca/fuwari)
