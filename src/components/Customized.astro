@@ -1,0 +1,11 @@
+---
+import Live2DWidget from "./customized/Live2dWidget.astro";
+import MetingPlayer from "./customized/MetingPlayer.vue";
+import StarCard from "./customized/StarCard.vue";
+---
+
+<div id="customized">
+  <MetingPlayer client:load />
+  <StarCard client:load />
+  <Live2DWidget />
+</div>
