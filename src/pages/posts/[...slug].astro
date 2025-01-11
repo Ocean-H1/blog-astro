@@ -8,6 +8,8 @@ import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 import { getDir, getPostUrlBySlug } from "@utils/url-utils";
 import { Icon } from "astro-icon/components";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
 import { licenseConfig } from "src/config";
 import PostMetadata from "../../components/PostMeta.astro";
 import ImageWrapper from "../../components/misc/ImageWrapper.astro";
@@ -25,9 +27,12 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content, headings } = await entry.render();
+const { Content, headings, remarkPluginFrontmatter } = await entry.render();
 
-const { remarkPluginFrontmatter } = await entry.render();
+dayjs.extend(utc);
+const lastModified = dayjs(remarkPluginFrontmatter.lastModified)
+  .utc()
+  .format("YYYY-MM-DD HH:MM:ss");
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -155,6 +160,7 @@ const jsonLd = {
             title={entry.data.title}
             slug={entry.slug}
             pubDate={entry.data.published}
+            lastModified={lastModified}
             class="mb-6 rounded-xl license-container onload-animation"
           />
         )
