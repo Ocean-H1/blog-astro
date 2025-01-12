@@ -5,7 +5,7 @@ import StarCard from "./customized/StarCard.vue";
 ---
 
 <div id="customized">
-  <MetingPlayer client:load />
-  <StarCard client:load />
+  <MetingPlayer client:only="vue" />
+  <StarCard client:only="vue" />
   <Live2DWidget />
 </div>
