@@ -14,7 +14,7 @@ import MainGridLayout from "@layouts/MainGridLayout.astro";
   <div
     class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-36"
   >
-    <div class="card-base z-10 px-9 py-6 relative w-full flex flex-wrap gap-8">
+    <div class="card-base z-10 px-9 py-6 relative w-full flex flex-wrap gap-2">
       <h1 class="text-2xl font-semibold w-full">My Friends</h1>
       <p class="w-full">
         需要互加友链的朋友，请直接留言或通过主页任意方式联系我
@@ -22,13 +22,12 @@ import MainGridLayout from "@layouts/MainGridLayout.astro";
       {
         friendLinksConfig.map(({ avatarURL, link, bio, nickname }) => {
           return (
-            <FriendCard
-              className="flex-none w-2/5"
-              avatarURL={avatarURL}
+            <info-card
+              avatar={avatarURL}
               link={link}
-              bio={bio}
-              nickname={nickname}
-              client:load
+              name={nickname}
+              desc={bio}
+              style="width: 30%;"
             />
           );
         })
@@ -36,3 +35,5 @@ import MainGridLayout from "@layouts/MainGridLayout.astro";
     </div>
   </div>
 </MainGridLayout>
+
+<script src="../components/web-components/InfoCard.ts"></script>
