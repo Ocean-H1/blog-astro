@@ -131,7 +131,7 @@ template.innerHTML = /*html*/ `
 <div class="info-card">
   <span class="tag"></span>
   <a class="link" target="_blank">
-    <img class="avatar" onerror="this.onerror=null,this.src="./404.jpg"">
+    <img class="avatar">
     <div class="info">
       <div class="name"></div>
       <div class="desc"></div>
