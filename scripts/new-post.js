@@ -45,12 +45,15 @@ const categoryMap = {
   network: '计算机网络',
   os: '操作系统',
   tools: '工具',
+  'design-pattern': '设计模式',
   other: '其他',
 }
 const coverMap = {
   algorithm:
     'https://fastly.jsdelivr.net/gh/Ocean-H1/blog_image_bed/leetcode.png',
   frontend: 'https://fastly.jsdelivr.net/gh/Ocean-H1/blog_image_bed/bg-js.png',
+  'design-pattern':
+    'https://fastly.jsdelivr.net/gh/Ocean-H1/blog_image_bed/design-pattern.png',
 }
 
 const defaultCover =
