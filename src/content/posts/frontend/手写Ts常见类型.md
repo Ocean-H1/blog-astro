@@ -3,9 +3,9 @@ title: 手写TS常见类型
 published: 2023-08-07
 image: "https://fastly.jsdelivr.net/gh/Ocean-H1/blog_image_bed/what_is_ts.png"
 description: '手写TS常见类型'
-tags: [Typescript]
+tags: [TypeScript]
 category: 前端
-draft: false 
+draft: false
 ---
 
 ## 1. 手写 Pick
