@@ -1,9 +1,13 @@
 ---
+import { getEntry } from "astro:content";
 import { friendLinksConfig } from "@/config";
-import FriendCard from "@components/FriendCard";
+import Markdown from "@components/misc/Markdown.astro";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
+
+const friendLink = await getEntry("spec", "friendlink");
+const { Content } = await friendLink.render();
 ---
 
 <MainGridLayout
@@ -15,10 +19,9 @@ import MainGridLayout from "@layouts/MainGridLayout.astro";
     class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-36"
   >
     <div class="card-base z-10 px-9 py-6 relative w-full flex flex-wrap gap-2">
-      <h1 class="text-2xl font-semibold w-full">My Friends</h1>
-      <p class="w-full">
-        需要互加友链的朋友，请直接留言或通过主页任意方式联系我
-      </p>
+      <Markdown class="w-full">
+        <Content />
+      </Markdown>
       {
         friendLinksConfig.map(({ avatarURL, link, bio, nickname }) => {
           return (
