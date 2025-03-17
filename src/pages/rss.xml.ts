@@ -30,6 +30,12 @@ export async function GET(context: APIContext) {
         }),
       }
     }),
-    customData: `<language>${siteConfig.lang}</language>`,
+    customData: `<language>${siteConfig.lang}</language>
+    <!-- 添加 Follow 认证标签 -->
+      <follow_challenge>
+        <feedId>124435544653030400</feedId>
+        <userId>41696381027074048</userId>
+      </follow_challenge>
+    `,
   })
 }
