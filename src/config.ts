@@ -30,11 +30,31 @@ export const siteConfig: SiteConfig = {
     depth: 2                // Maximum heading depth to show in the table, from 1 to 3
   },
   favicon: [    // Leave this array empty to use the default favicon
-    // {
-    //   src: '/favicon/icon.png',    // Path of the favicon, relative to the /public directory
-    //   theme: 'light',              // (Optional) Either 'light' or 'dark', set only if you have different favicons for light and dark mode
-    //   sizes: '32x32',              // (Optional) Size of the favicon, set only if you have favicons of different sizes
-    // }
+    {
+      src: '/favicon/favicon.ico',    // Path of the favicon, relative to the /public directory
+      // sizes: '32x32',              // (Optional) Size of the favicon, set only if you have favicons of different sizes
+      // theme: 'light',              // (Optional) Either 'light' or 'dark', set only if you have different favicons for light and dark mode
+    },
+    {
+      src: '/favicon/favicon-16x16.png',
+      sizes: '16x16',
+    },
+    {
+      src: '/favicon/favicon-32x32.png',
+      sizes: '32x32',
+    },
+    {
+      src: '/favicon/apple-touch-icon.png',
+      sizes: '180x180',
+    },
+    {
+      src: '/favicon/android-chrome-192x192.png',
+      sizes: '192x192',
+    },
+    {
+      src: '/favicon/android-chrome-512x512.png',
+      sizes: '512x512',
+    },
   ]
 }
 
