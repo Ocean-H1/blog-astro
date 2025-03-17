@@ -7,21 +7,25 @@ import sanitizeHtml from 'sanitize-html'
 
 const parser = new MarkdownIt()
 
+function genRawContent(body: string, coverUrl: string | undefined) {
+  return `<p><img src="${coverUrl}" alt="cover" /></p>${parser.render(body)}`
+}
+
 export async function GET(context: APIContext) {
   const blog = await getSortedPosts()
 
   return rss({
     title: siteConfig.title,
     description: siteConfig.subtitle || 'No description',
-    site: context.site ?? 'https://fuwari.vercel.app',
+    site: context.site ?? 'https://oceanh.top',
     items: blog.map(post => {
+      const rawContent = genRawContent(post.body, post.data.image)
       return {
-        ...post.data,
         title: post.data.title,
         pubDate: post.data.published,
         description: post.data.description || '',
         link: `/posts/${post.slug}/`,
-        content: sanitizeHtml(parser.render(post.body), {
+        content: sanitizeHtml(rawContent, {
           allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
         }),
       }

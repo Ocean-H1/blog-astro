@@ -62,16 +62,16 @@ export const profileConfig: ProfileConfig = {
       url: 'https://oceanh.top',
     },
     {
-      name: 'BiLiBiLi',
-      icon: 'fa6-brands:bilibili',
-      url: 'https://space.bilibili.com/382688944?spm_id_from=333.1007.0.0',
-    },
-    {
       name: 'GitHub',
       icon: 'fa6-brands:github', // Visit https://icones.js.org/ for icon codes
       // You will need to install the corresponding icon set if it's not already included
       // `pnpm add @iconify-json/<icon-set-name>`
       url: 'https://github.com/Ocean-H1',
+    },
+    {
+      name: 'RSS',
+      icon: 'material-symbols:rss-feed-rounded',
+      url: 'https://blog.oceanh.top/rss.xml',
     },
   ],
 }
