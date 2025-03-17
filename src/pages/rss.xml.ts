@@ -16,6 +16,7 @@ export async function GET(context: APIContext) {
     site: context.site ?? 'https://fuwari.vercel.app',
     items: blog.map(post => {
       return {
+        ...post.data,
         title: post.data.title,
         pubDate: post.data.published,
         description: post.data.description || '',
