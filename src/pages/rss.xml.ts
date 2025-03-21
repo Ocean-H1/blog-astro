@@ -5,10 +5,17 @@ import type { APIContext } from 'astro'
 import MarkdownIt from 'markdown-it'
 import sanitizeHtml from 'sanitize-html'
 
-const parser = new MarkdownIt()
+const parser = new MarkdownIt({
+  html: true, // 允许HTML内容
+  breaks: true, // 转换换行符为<br>
+  linkify: true, // 自动转换URL为链接
+})
 
 function genRawContent(body: string, coverUrl: string | undefined) {
-  return `<p><img src="${coverUrl}" alt="cover" /></p>${parser.render(body)}`
+  const cover = coverUrl
+    ? `<h2>封面图</h2><p><img src="${coverUrl}" alt="cover" /></p>`
+    : ''
+  return `${cover}${parser.render(body)}`
 }
 
 export async function GET(context: APIContext) {
