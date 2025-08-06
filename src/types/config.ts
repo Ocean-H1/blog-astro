@@ -26,6 +26,10 @@ export type SiteConfig = {
   }
 
   favicon: Favicon[]
+
+  live2d: {
+    enable: boolean
+  }
 }
 
 export type Favicon = {

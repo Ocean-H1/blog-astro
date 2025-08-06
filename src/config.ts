@@ -55,7 +55,10 @@ export const siteConfig: SiteConfig = {
       src: '/favicon/android-chrome-512x512.png',
       sizes: '512x512',
     },
-  ]
+  ],
+  live2d: {
+    enable: false, // Don't display the live2d models
+  }
 }
 
 export const navBarConfig: NavBarConfig = {
