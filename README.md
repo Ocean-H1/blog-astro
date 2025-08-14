@@ -17,6 +17,7 @@
 - [x] Github卡片
 - [x] 添加remark-emoji表情插件
 - [x] 添加rehype自定义插件Card
+- [ ] 添加Github风格热力图
 - [ ] 文章置顶功能
 - [ ] 资源分享页
 - [ ] 博客支持置顶等排序规则
