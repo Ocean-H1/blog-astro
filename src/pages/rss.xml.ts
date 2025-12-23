@@ -19,13 +19,13 @@ function genRawContent(body: string, coverUrl: string | undefined) {
 }
 
 export async function GET(context: APIContext) {
-  const blog = await getSortedPosts()
+  const blogs = await getSortedPosts()
 
   return rss({
     title: siteConfig.title,
     description: siteConfig.subtitle || 'No description',
     site: context.site ?? 'https://oceanh.top',
-    items: blog.map(post => {
+    items: blogs.map(post => {
       const rawContent = genRawContent(post.body, post.data.image)
       return {
         title: post.data.title,
@@ -34,6 +34,16 @@ export async function GET(context: APIContext) {
         link: `/posts/${post.slug}/`,
         content: sanitizeHtml(rawContent, {
           allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
+          allowedAttributes: {
+            // 给pre标签放行class属性
+            pre: ['class'],
+            // 给code标签放行class属性（核心：保留language-xxx类）
+            code: ['class'],
+            // 给img标签放行src、alt属性（按需添加，避免封面图属性丢失）
+            img: ['src', 'alt'],
+            // 其他标签保持默认配置
+            ...sanitizeHtml.defaults.allowedAttributes,
+          },
         }),
       }
     }),
