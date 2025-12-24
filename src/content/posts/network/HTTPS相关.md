@@ -129,7 +129,7 @@ draft: false
 
 ![中间人攻击](https://fastly.jsdelivr.net/gh/Ocean-H1/blog_image_bed/middleAttack.png)
 
-:::danger
+:::caution
 
 ​		如果在数据传输过程中，中间人劫持到了数据，此时他的确无法得到浏览器生成的密钥X，这个密钥本身被公钥A加密了，只有服务器才有私钥A’解开它，然而中间人却完全不需要拿到私钥A’就能干坏事了。比如：
 

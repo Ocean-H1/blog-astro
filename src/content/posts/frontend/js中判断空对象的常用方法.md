@@ -13,7 +13,7 @@ image: 'https://fastly.jsdelivr.net/gh/Ocean-H1/blog_image_bed/bg-js.png'
 
 ### 1. JSON.stringify(不可靠)
 
-:::danger
+:::caution
 但因为该方法序列化的某些策略，导致这种方法的判断很不可靠，后面有具体的测试用例
 :::
 
@@ -95,7 +95,7 @@ console.log(res5);
  */
 ```
 
-:::danger
+:::caution
 异常的测试用例：
 :::
 

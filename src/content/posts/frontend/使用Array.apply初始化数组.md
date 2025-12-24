@@ -22,7 +22,7 @@ draft: false
   })
 ```
 
-:::danger
+:::caution
 
 ​	这样写的结果是，并**不会**进入`forEach`的遍历
 

@@ -84,7 +84,7 @@ Function.prototype.myBind = function (context,...args) {
 }
 ```
 
-:::danger
+:::caution
 
 但是，请注意，如果直接这样写，当你使用构造函数new的时候，会有一些问题（导致new出来的实例与原型链断开）请看下面的例子
 
