@@ -22,7 +22,7 @@ function replaceCustomContainersToMarkdownQuote(
   rawMarkdown: string,
   customConfig: Record<string, string> = {},
 ): string {
-  // 默认容器-标题映射（键为小写，支持大小写容器匹配）
+  // 默认容器-标题映射
   const defaultContainerMap: Record<string, string> = {
     tip: '提示',
     note: '备注',
@@ -55,7 +55,6 @@ function replaceCustomContainersToMarkdownQuote(
       customTitle: string,
       content: string,
     ) => {
-      const lowerCaseContainerType = containerType.toLowerCase()
       const trimmedTitle: string = customTitle.trim()
       const trimmedContent: string = content.trim().replace(/\n/g, '\n> ')
       return `> **${trimmedTitle}**:\n> ${trimmedContent}\n\n`
@@ -64,14 +63,10 @@ function replaceCustomContainersToMarkdownQuote(
 
   // 匹配所有「不带标题」的容器
   processedContent = processedContent.replace(
-    new RegExp(`:::(${containerTypeRegexStr})\\s*([\\s\\S]*?)\\s*:::`, 'gi'), // 新增i修饰符
+    new RegExp(`:::(${containerTypeRegexStr})\\s*([\\s\\S]*?)\\s*:::`, 'gi'),
     (match: string, containerType: string, content: string) => {
-      // 容器类型转小写，确保正确获取默认标题
-      const lowerCaseContainerType = containerType.toLowerCase()
-      const defaultTitle: string =
-        containerMap[lowerCaseContainerType] || lowerCaseContainerType
       const trimmedContent: string = content.trim().replace(/\n/g, '\n> ')
-      return `> **${defaultTitle}**:\n ${trimmedContent}\n\n`
+      return `> ${trimmedContent}\n\n`
     },
   )
 
