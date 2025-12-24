@@ -12,9 +12,7 @@ const parser = new MarkdownIt({
 })
 
 function genRawContent(body: string, coverUrl: string | undefined) {
-  const cover = coverUrl
-    ? `<h2>封面图</h2><p><img src="${coverUrl}" alt="cover" /></p>`
-    : ''
+  const cover = coverUrl ? `<p><img src="${coverUrl}" alt="cover" /></p>` : ''
   return `${cover}${parser.render(body)}`
 }
 
@@ -22,29 +20,32 @@ export async function GET(context: APIContext) {
   const blogs = await getSortedPosts()
 
   return rss({
-    title: siteConfig.title,
-    description: siteConfig.subtitle || 'No description',
+    title: `<![CDATA[${siteConfig.title}]]>`,
+    description: `<![CDATA[${siteConfig.subtitle || 'No description'}]]>`,
     site: context.site ?? 'https://oceanh.top',
-    items: blogs.map(post => {
+    items: blogs.map((post, index) => {
       const rawContent = genRawContent(post.body, post.data.image)
+      const content = sanitizeHtml(rawContent, {
+        allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
+        allowedAttributes: {
+          // 给pre标签放行class属性
+          pre: ['class'],
+          // 给code标签放行class属性（核心：保留language-xxx类）
+          code: ['class'],
+          // 给img标签放行src、alt属性（按需添加，避免封面图属性丢失）
+          img: ['src', 'alt'],
+          // 其他标签保持默认配置
+          ...sanitizeHtml.defaults.allowedAttributes,
+        },
+      })
+
       return {
         title: post.data.title,
         pubDate: post.data.published,
         description: post.data.description || '',
         link: `/posts/${post.slug}/`,
-        content: sanitizeHtml(rawContent, {
-          allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
-          allowedAttributes: {
-            // 给pre标签放行class属性
-            pre: ['class'],
-            // 给code标签放行class属性（核心：保留language-xxx类）
-            code: ['class'],
-            // 给img标签放行src、alt属性（按需添加，避免封面图属性丢失）
-            img: ['src', 'alt'],
-            // 其他标签保持默认配置
-            ...sanitizeHtml.defaults.allowedAttributes,
-          },
-        }),
+        content: `<![CDATA[${content}]]>`,
+        author: 'oceanhhan@gmail.com (Oceanhhan)',
       }
     }),
     customData: `<language>${siteConfig.lang}</language>
