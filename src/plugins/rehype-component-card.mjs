@@ -14,14 +14,20 @@ export function CardComponent(properties, children) {
     return h(
       'div',
       { class: 'hidden' },
-      'Invalid card directive. (Card directives must be of block type ":::card{title=\'Title\'} <content> :::")',
+      'Invalid card directive. (Card directives must be of block type ":::card[xxx] <content> :::")',
     )
   }
 
-  const title = properties?.title ? properties.title : 'Untitled Card'
+  let label = 'Untitled Card'
+  let content = children
+  if (properties?.['has-directive-label']) {
+    label = children[0] // The first child is the label
+    content = children.slice(1)
+    label.tagName = 'div' // Change the tag <p> to <div>
+  }
 
   return h('div', { class: 'card-component' }, [
-    h('div', { class: 'card-header' }, title),
-    h('div', { class: 'card-body' }, children),
+    h('div', { class: 'card-header' }, label),
+    h('div', { class: 'card-body' }, content),
   ])
 }
