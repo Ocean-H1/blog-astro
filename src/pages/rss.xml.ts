@@ -83,8 +83,8 @@ export async function GET(context: APIContext) {
   const blogs = await getSortedPosts()
 
   return rss({
-    title: `<![CDATA[${siteConfig.title}]]>`,
-    description: `<![CDATA[${siteConfig.subtitle || 'No description'}]]>`,
+    title: siteConfig.title,
+    description: siteConfig.subtitle || 'No description',
     site: context.site ?? 'https://oceanh.top',
     items: blogs.map((post, index) => {
       const rawContent = genRawContent(post.body, post.data.image)
@@ -106,7 +106,7 @@ export async function GET(context: APIContext) {
         pubDate: post.data.published,
         description: post.data.description || '',
         link: `/posts/${post.slug}/`,
-        content: `<![CDATA[${content}]]>`,
+        content: content,
         author: 'oceanhhan@gmail.com (Oceanhhan)',
       }
     }),
