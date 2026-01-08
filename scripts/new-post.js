@@ -1,6 +1,5 @@
 /* This is a script to create a new post markdown file with front-matter */
 
-import { exec } from 'node:child_process'
 import fs from 'node:fs'
 import path from 'node:path'
 
@@ -20,6 +19,7 @@ const coverMap = {
   frontend: 'https://fastly.jsdelivr.net/gh/Ocean-H1/blog_image_bed/bg-js.png',
   'design-pattern':
     'https://fastly.jsdelivr.net/gh/Ocean-H1/blog_image_bed/design-pattern.png',
+  os: 'https://fastly.jsdelivr.net/gh/Ocean-H1/blog_image_bed/os.png',
 }
 
 const defaultCover =
