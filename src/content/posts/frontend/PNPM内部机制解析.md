@@ -126,7 +126,7 @@ PNPM全局存储(默认~/.pnpm-store/v3/files) 结构示例：
 >     * ```bash
 >       # 将全局 CAS 仓库设置为 D 盘（Windows）
 >       pnpm config set store-dir D:\.pnpm-store
->       
+>         
 >       # 将全局 CAS 仓库设置为 /mnt/nfs（Linux/macOS）
 >       pnpm config set store-dir /mnt/nfs/.pnpm-store
 >       ```
