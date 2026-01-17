@@ -53,6 +53,26 @@ tags: [Git]
 * `git commit --amend -m [message]`: 用一次新的`commit`，替代上一次提交，如果代码没有任何新变化，则用来改写上一次`commit`的提交信息
 * `git commit --amend [file1] [file2] ...`: 重做上一次`commit`，并包括指定文件的新变化
 
+## 暂存修改（stash）
+
+* `git stash`: 保存当前工作区的修改（仅已跟踪文件），生成默认备注的stash记录
+* `git stash save "[message]"`: 保存当前工作区修改，并添加自定义备注（推荐）
+* `git stash save -u "[message]"`: 保存修改，包含未跟踪的新增文件
+* `git stash save -a "[message]"`: 保存修改，包含未跟踪+忽略的文件
+* `git stash list`: 列出所有已保存的stash记录
+* `git stash apply`: 恢复最新的stash修改，不删除stash记录
+* `git stash apply stash@{n}`: 恢复指定的stash修改（n为记录序号，如stash@{1}）
+* `git stash pop`: 恢复最新的stash修改，并删除该stash记录（推荐）
+* `git stash pop stash@{n}`: 恢复指定的stash修改，并删除该记录
+* `git stash drop`: 删除最新的stash记录
+* `git stash drop stash@{n}`: 删除指定的stash记录
+* `git stash clear`: 删除所有stash记录
+* `git stash show`: 查看最新stash的文件变更概要
+* `git stash show -p`: 查看最新stash的详细代码差异
+* `git stash show -p stash@{n}`: 查看指定stash的详细代码差异
+* `git stash branch [branch-name]`: 基于最新stash创建新分支，并自动删除该stash
+* `git stash branch [branch-name] stash@{n}`: 基于指定stash创建新分支
+
 ## 分支
 
 * `git branch`: 列出所有本地分支
