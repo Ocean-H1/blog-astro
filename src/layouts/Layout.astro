@@ -3,29 +3,30 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
-import { profileConfig, siteConfig } from "@/config";
 import ConfigCarrier from "@components/ConfigCarrier.astro";
+import { profileConfig, siteConfig } from "@/config";
 import Customized from "@components/Customized.astro";
 import {
-  AUTO_MODE,
-  BANNER_HEIGHT,
-  BANNER_HEIGHT_EXTEND,
-  BANNER_HEIGHT_HOME,
-  DARK_MODE,
-  DEFAULT_THEME,
-  LIGHT_MODE,
-  PAGE_WIDTH,
+	AUTO_MODE,
+	BANNER_HEIGHT,
+	BANNER_HEIGHT_EXTEND,
+	BANNER_HEIGHT_HOME,
+	DARK_MODE,
+	DEFAULT_THEME,
+	LIGHT_MODE,
+	PAGE_WIDTH,
 } from "../constants/constants";
 import { defaultFavicons } from "../constants/icon";
 import type { Favicon } from "../types/config";
-import { url, pathsEqual } from "../utils/url-utils";
+import { pathsEqual, url } from "../utils/url-utils";
+import "katex/dist/katex.css";
 
 interface Props {
-  title?: string;
-  banner?: string;
-  description?: string;
-  lang?: string;
-  setOGTypeArticle?: boolean;
+	title?: string;
+	banner?: string;
+	description?: string;
+	lang?: string;
+	setOGTypeArticle?: boolean;
 }
 
 let { title, banner, description, lang, setOGTypeArticle } = Astro.props;
@@ -39,7 +40,7 @@ const isHomePage = pathsEqual(Astro.url.pathname, url("/"));
 // why doing this in Layout instead of GlobalStyles: https://github.com/withastro/astro/issues/6728#issuecomment-1502203757
 const configHue = siteConfig.themeColor.hue;
 if (!banner || typeof banner !== "string" || banner.trim() === "") {
-  banner = siteConfig.banner.src;
+	banner = siteConfig.banner.src;
 }
 
 // TODO don't use post cover as banner for now
@@ -49,27 +50,27 @@ const enableBanner = siteConfig.banner.enable;
 
 let pageTitle: string;
 if (title) {
-  pageTitle = `${title} - ${siteConfig.title}`;
+	pageTitle = `${title} - ${siteConfig.title}`;
 } else {
-  pageTitle = `${siteConfig.title} - ${siteConfig.subtitle}`;
+	pageTitle = `${siteConfig.title} - ${siteConfig.subtitle}`;
 }
 
 const favicons: Favicon[] =
-  siteConfig.favicon.length > 0 ? siteConfig.favicon : defaultFavicons;
+	siteConfig.favicon.length > 0 ? siteConfig.favicon : defaultFavicons;
 
 // const siteLang = siteConfig.lang.replace('_', '-')
 if (!lang) {
-  lang = `${siteConfig.lang}`;
+	lang = `${siteConfig.lang}`;
 }
 const siteLang = lang.replace("_", "-");
 
 const bannerOffsetByPosition = {
-  top: `${BANNER_HEIGHT_EXTEND}vh`,
-  center: `${BANNER_HEIGHT_EXTEND / 2}vh`,
-  bottom: "0",
+	top: `${BANNER_HEIGHT_EXTEND}vh`,
+	center: `${BANNER_HEIGHT_EXTEND / 2}vh`,
+	bottom: "0",
 };
 const bannerOffset =
-  bannerOffsetByPosition[siteConfig.banner.position || "center"];
+	bannerOffsetByPosition[siteConfig.banner.position || "center"];
 ---
 
 <!doctype html>
@@ -167,21 +168,10 @@ const bannerOffset =
     ></style>
     <!-- defines global css variables. This will be applied to <html> <body> and some other elements idk why -->
 
-    <slot name="head" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.staticfile.net/KaTeX/0.16.9/katex.min.css"
-      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
-      crossorigin="anonymous"
-    />
+		<slot name="head"></slot>
 
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title={profileConfig.name}
-      href={`${Astro.site}rss.xml`}
-    />
+		<link rel="alternate" type="application/rss+xml" title={profileConfig.name} href={`${Astro.site}rss.xml`}/>
 
     <link
       rel="stylesheet"
@@ -241,27 +231,22 @@ const bannerOffset =
 </style>
 
 <script>
-  import "overlayscrollbars/overlayscrollbars.css";
-  import {
-    OverlayScrollbars,
-    // ScrollbarsHidingPlugin,
-    // SizeObserverPlugin,
-    // ClickScrollPlugin
-  } from "overlayscrollbars";
-  import {
-    getHue,
-    getStoredTheme,
-    setHue,
-    setTheme,
-  } from "../utils/setting-utils";
-  import { pathsEqual, url } from "../utils/url-utils";
-  import {
-    BANNER_HEIGHT,
-    BANNER_HEIGHT_HOME,
-    BANNER_HEIGHT_EXTEND,
-    MAIN_PANEL_OVERLAPS_BANNER_HEIGHT,
-    PAGE_WIDTH,
-  } from "../constants/constants";
+import 'overlayscrollbars/overlayscrollbars.css';
+import {
+	OverlayScrollbars,
+	// ScrollbarsHidingPlugin,
+	// SizeObserverPlugin,
+	// ClickScrollPlugin
+} from 'overlayscrollbars';
+import {getHue, getStoredTheme, setHue, setTheme} from "../utils/setting-utils";
+import {pathsEqual, url} from "../utils/url-utils";
+import {
+	BANNER_HEIGHT,
+	BANNER_HEIGHT_HOME,
+	BANNER_HEIGHT_EXTEND,
+	MAIN_PANEL_OVERLAPS_BANNER_HEIGHT
+} from "../constants/constants";
+import { siteConfig } from '../config';
 
   /* Preload fonts */
   // (async function() {
@@ -346,47 +331,82 @@ function disableAnimation() {
     setHue(getHue());
   }
 
-  function initCustomScrollbar() {
-    const bodyElement = document.querySelector("body");
-    if (!bodyElement) return;
-    OverlayScrollbars(
-      // docs say that a initialization to the body element would affect native functionality like window.scrollTo
-      // but just leave it here for now
-      {
-        target: bodyElement,
-        cancel: {
-          nativeScrollbarsOverlaid: true, // don't initialize the overlay scrollbar if there is a native one
-        },
-      },
-      {
-        scrollbars: {
-          theme: "scrollbar-base scrollbar-auto py-1",
-          autoHide: "move",
-          autoHideDelay: 500,
-          autoHideSuspend: false,
-        },
-      }
-    );
-    document.querySelectorAll("pre").forEach((ele) => {
-      OverlayScrollbars(ele, {
-        scrollbars: {
-          theme: "scrollbar-base scrollbar-dark px-2",
-          autoHide: "leave",
-          autoHideDelay: 500,
-          autoHideSuspend: false,
-        },
-      });
-    });
-  }
+function initCustomScrollbar() {
+	const bodyElement = document.querySelector('body');
+	if (!bodyElement) return;
+	OverlayScrollbars(
+		// docs say that a initialization to the body element would affect native functionality like window.scrollTo
+		// but just leave it here for now
+		{
+			target: bodyElement,
+			cancel: {
+				nativeScrollbarsOverlaid: true,    // don't initialize the overlay scrollbar if there is a native one
+			}
+		}, {
+		scrollbars: {
+			theme: 'scrollbar-base scrollbar-auto py-1',
+			autoHide: 'move',
+			autoHideDelay: 500,
+			autoHideSuspend: false,
+		},
+	});
 
-  function showBanner() {
-    const banner = document.getElementById("banner");
-    if (!banner) {
-      console.error("Failed to find the banner element");
-      return;
-    }
-    banner.classList.remove("opacity-0", "scale-105");
-  }
+	const katexElements = document.querySelectorAll('.katex-display') as NodeListOf<HTMLElement>;
+
+	const katexObserverOptions = {
+		root: null,
+		rootMargin: '100px',
+		threshold: 0.1
+	};
+
+	const processKatexElement = (element: HTMLElement) => {
+		if (!element.parentNode) return;
+		if (element.hasAttribute('data-scrollbar-initialized')) return;
+
+		const container = document.createElement('div');
+		container.className = 'katex-display-container';
+		container.setAttribute('aria-label', 'scrollable container for formulas');
+
+		element.parentNode.insertBefore(container, element);
+		container.appendChild(element);
+
+		OverlayScrollbars(container, {
+			scrollbars: {
+				theme: 'scrollbar-base scrollbar-auto',
+				autoHide: 'leave',
+				autoHideDelay: 500,
+				autoHideSuspend: false
+			}
+		});
+
+		element.setAttribute('data-scrollbar-initialized', 'true');
+	};
+
+	const katexObserver = new IntersectionObserver((entries, observer) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+			processKatexElement(entry.target as HTMLElement);
+			observer.unobserve(entry.target);
+			}
+		});
+	}, katexObserverOptions);
+
+	katexElements.forEach(element => {
+		katexObserver.observe(element);
+	});
+}
+
+function showBanner() {
+	if (!siteConfig.banner.enable) return;
+
+	const banner = document.getElementById('banner');
+	if (!banner) {
+		console.error('Banner element not found');
+		return;
+	}
+
+	banner.classList.remove('opacity-0', 'scale-105');
+}
 
   function init() {
     // disableAnimation()()		// TODO
@@ -396,12 +416,8 @@ function disableAnimation() {
     showBanner();
   }
 
-  /* Load settings when entering the site */
-  init();
-
-  /* Load settings before swapping */
-  /* astro:after-swap event happened before swap animation */
-  document.addEventListener("astro:after-swap", init);
+/* Load settings when entering the site */
+init();
 
   const setup = () => {
     // TODO: temp solution to change the height of the banner
@@ -452,25 +468,25 @@ function disableAnimation() {
         heightExtend.classList.remove("hidden");
       }
 
-      // Hide the TOC while scrolling back to top
-      let toc = document.getElementById("toc-wrapper");
-      if (toc) {
-        toc.classList.add("toc-not-ready");
-      }
-    });
-    window.swup.hooks.on("page:view", () => {
-      // hide the temp high element when the transition is done
-      const heightExtend = document.getElementById("page-height-extend");
-      if (heightExtend) {
-        heightExtend.classList.remove("hidden");
-      }
-    });
-    window.swup.hooks.on("visit:end", (visit: { to: { url: string } }) => {
-      setTimeout(() => {
-        const heightExtend = document.getElementById("page-height-extend");
-        if (heightExtend) {
-          heightExtend.classList.add("hidden");
-        }
+		// Hide the TOC while scrolling back to top
+		let toc = document.getElementById('toc-wrapper');
+		if (toc) {
+			toc.classList.add('toc-not-ready')
+		}
+	});
+	window.swup.hooks.on('page:view', () => {
+		// hide the temp high element when the transition is done
+		const heightExtend = document.getElementById('page-height-extend')
+		if (heightExtend) {
+			heightExtend.classList.remove('hidden')
+		}
+	});
+	window.swup.hooks.on('visit:end', (_visit: {to: {url: string}}) => {
+		setTimeout(() => {
+			const heightExtend = document.getElementById('page-height-extend')
+			if (heightExtend) {
+				heightExtend.classList.add('hidden')
+			}
 
         // Just make the transition looks better
         const toc = document.getElementById("toc-wrapper");
@@ -617,3 +633,11 @@ function disableAnimation() {
     document.addEventListener("swup:enable", setup);
   }
 </script>
+
+<!-- custom element -->
+<script>
+  import { defineCustomElements } from 'bilibili-bangumi-component/loader'
+
+  defineCustomElements()
+</script>
+<script src="../components/web-components/InfoCard.ts"></script>

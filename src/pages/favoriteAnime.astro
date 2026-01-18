@@ -1,7 +1,7 @@
 ---
-import I18nKey from '@i18n/i18nKey'
-import { i18n } from '@i18n/translation'
-import MainGridLayout from '@layouts/MainGridLayout.astro'
+import I18nKey from "@i18n/i18nKey";
+import { i18n } from "@i18n/translation";
+import MainGridLayout from "@layouts/MainGridLayout.astro";
 ---
 <MainGridLayout title={i18n(I18nKey.favoriteAnime)} description={i18n(I18nKey.favoriteAnime)} >
   <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
@@ -10,9 +10,3 @@ import MainGridLayout from '@layouts/MainGridLayout.astro'
     </div>
   </div>
 </MainGridLayout>
-
-<script>
-  import { defineCustomElements } from 'bilibili-bangumi-component/loader'
-
-  defineCustomElements()
-</script>

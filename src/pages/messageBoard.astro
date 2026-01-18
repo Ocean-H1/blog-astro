@@ -1,13 +1,15 @@
 ---
-import { getEntry } from "astro:content";
+import { getEntry, render } from "astro:content";
 import Markdown from "@components/misc/Markdown.astro";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "../i18n/translation";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
 
 const messageBoard = await getEntry("spec", "messageboard");
-
-const { Content } = await messageBoard.render();
+if (!messageBoard) {
+	throw new Error("MessageBoard page content not found");
+}
+const { Content } = await render(messageBoard);
 ---
 
 <MainGridLayout

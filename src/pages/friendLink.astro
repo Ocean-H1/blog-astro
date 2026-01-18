@@ -1,13 +1,16 @@
 ---
-import { getEntry } from "astro:content";
-import { friendLinksConfig } from "@/config";
+import { getEntry, render } from "astro:content";
 import Markdown from "@components/misc/Markdown.astro";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
+import { friendLinksConfig } from "@/config";
 
 const friendLink = await getEntry("spec", "friendlink");
-const { Content } = await friendLink.render();
+if (!friendLink) {
+	throw new Error("FriendLink page content not found");
+}
+const { Content } = await render(friendLink);
 ---
 
 <MainGridLayout
@@ -38,5 +41,3 @@ const { Content } = await friendLink.render();
     </div>
   </div>
 </MainGridLayout>
-
-<script src="../components/web-components/InfoCard.ts"></script>

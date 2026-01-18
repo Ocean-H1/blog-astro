@@ -73,8 +73,14 @@ Please create the directory first, or check if the category name is correct.`)
 }
 
 if (fs.existsSync(fullPath)) {
-  console.error(`Error：File ${fullPath} already exists `)
+  console.error(`Error: File ${fullPath} already exists `)
   process.exit(1)
+}
+
+// recursive mode creates multi-level directories
+const dirPath = path.dirname(fullPath)
+if (!fs.existsSync(dirPath)) {
+    fs.mkdirSync(dirPath, { recursive: true })
 }
 
 const content = `---
