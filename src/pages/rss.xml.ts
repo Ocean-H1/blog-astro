@@ -89,6 +89,14 @@ function genRawContent(body: string, coverUrl: string | undefined) {
 	return `${cover}${parser.render(content)}`;
 }
 
+function stripInvalidXmlChars(str: string): string {
+	return str.replace(
+		// biome-ignore lint/suspicious/noControlCharactersInRegex: https://www.w3.org/TR/xml/#charsets
+		/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x9F\uFDD0-\uFDEF\uFFFE\uFFFF]/g,
+		"",
+	);
+}
+
 export async function GET(context: APIContext) {
 	const blogs = await getSortedPosts();
 
@@ -111,12 +119,13 @@ export async function GET(context: APIContext) {
 					...sanitizeHtml.defaults.allowedAttributes,
 				},
 			});
+			const cleanedContent = stripInvalidXmlChars(content);
 			return {
 				title: post.data.title,
 				pubDate: post.data.published,
 				description: post.data.description || "",
 				link: `/posts/${post.slug}/`,
-				content: content,
+				content: cleanedContent,
 				author: "oceanhhan@gmail.com (Oceanhhan)",
 			};
 		}),
