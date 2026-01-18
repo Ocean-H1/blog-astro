@@ -85,7 +85,7 @@ tags: [Git]
 * `git checkout [branch-name]`: 切换到指定分支，并更新工作区
 * `git checkout -`: 切换到上一个分支
 * `git branch --set-upstream [branch] [remote-branch]`: 建立追踪关系，在现有分支与指定的远程分支之间
-* `git merge [branch]`: 合并制定分支到当前分支
+* `git merge [branch]`: 合并指定分支到当前分支
 * `git cherry-pick [commit]`: 选择一个`commit`，合并进当前分支
 * `git branch -d [branch-name]`: 删除指定分支
 * `git push origin --delete [branch-name]`: 删除指定远程分支
