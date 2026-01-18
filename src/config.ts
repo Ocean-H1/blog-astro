@@ -96,7 +96,7 @@ export const profileConfig: ProfileConfig = {
 		{
 			name: "RSS",
 			icon: "material-symbols:rss-feed-rounded",
-			url: "https://blog.oceanh.top/rss.xml",
+			url: "/rss.xml",
 		},
 	],
 };
