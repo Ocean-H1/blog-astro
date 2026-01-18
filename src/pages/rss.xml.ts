@@ -70,6 +70,14 @@ function replaceCustomContainersToMarkdownQuote(
     },
   )
 
+  // 匹配所有Github卡片容器 ::github{repo="owner/repo"} 转为超链接
+  processedContent = processedContent.replace(
+    /::github\{repo="([^"]+)"\}/gi,
+    (match: string, repo: string) => {
+      return `[Github Repository(${repo})](https://github.com/${repo})`
+    },
+  )
+
   return processedContent
 }
 
