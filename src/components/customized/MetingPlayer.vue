@@ -1,5 +1,5 @@
 <template>
-  <div class="MetingPlayer">
+  <div class="MetingPlayer" v-if="enable">
     <Meting
       server="netease"
       mid="7324368135"
@@ -12,13 +12,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script lang="ts" setup>
 import { Meting } from "./audio-player";
 
-export default defineComponent({
-  components: {
-    Meting,
-  },
-});
+defineProps(["enable"]);
 </script>

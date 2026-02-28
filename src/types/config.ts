@@ -40,6 +40,9 @@ export type SiteConfig = {
 	live2d: {
 		enable: boolean;
 	};
+	metingPlayer: {
+		enable: boolean;
+	};
 };
 
 export type Favicon = {

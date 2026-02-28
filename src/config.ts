@@ -59,7 +59,10 @@ export const siteConfig: SiteConfig = {
 		},
 	],
 	live2d: {
-		enable: false, // Don't display the live2d models
+		enable: false, // display the live2d models
+	},
+	metingPlayer: {
+		enable: false, // display the music player
 	},
 };
 

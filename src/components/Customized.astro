@@ -1,11 +1,12 @@
 ---
-import Live2DWidget from './customized/Live2dWidget.astro'
-import MetingPlayer from './customized/MetingPlayer.vue'
+import Live2DWidget from "./customized/Live2dWidget.astro";
+import MetingPlayer from "./customized/MetingPlayer.vue";
+import { siteConfig } from "@/config";
 // import StarCard from "./customized/StarCard.vue";
 ---
 
 <div id="customized">
-  <MetingPlayer client:only="vue" />
+  <MetingPlayer client:only="vue" enable={siteConfig.metingPlayer.enable} />
   <!-- <StarCard client:only="vue" /> -->
-  <Live2DWidget />
+  <Live2DWidget enable={siteConfig.live2d.enable} />
 </div>
