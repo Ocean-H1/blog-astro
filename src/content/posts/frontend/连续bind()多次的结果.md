@@ -42,7 +42,7 @@ func(); //?
 
 ## 简单分析:key:
 
-![](https://img-blog.csdnimg.cn/bc3da44fa2d048528171944cfde800a4.png#pic_center)
+![chainedBind](https://fastly.jsdelivr.net/gh/Ocean-H1/blog_image_bed/bind.png)
 
 :::tip 结论
 

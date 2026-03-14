@@ -834,9 +834,3 @@ class Watcher {
 ```
 运行效果：
 ![请添加图片描述](https://img-blog.csdnimg.cn/abd5e8e618a24fbda838f652d25ea012.gif)
-
-
-
-好想换个聪明的脑子！
-![在这里插入图片描述](https://img-blog.csdnimg.cn/3f6c11cbd62b4271bb8c472fa66ff9e7.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAT2NlYW7vvIHvvIE=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
-

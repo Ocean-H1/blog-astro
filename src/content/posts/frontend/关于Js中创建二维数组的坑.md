@@ -34,13 +34,13 @@ let arr1= new Array(10).fill(new Array(10).fill(0))
 ```
 ## 验证
 
-![请添加图片描述](https://img-blog.csdnimg.cn/9e78ffe26b084ff390b659fafb83d6e9.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAT2NlYW7vvIHvvIE=,size_20,color_FFFFFF,t_70,g_se,x_16)
+![请添加图片描述](https://fastly.jsdelivr.net/gh/Ocean-H1/blog_image_bed/2d_array1.png)
 
 **这时候，若你想设置，`arr[0][0] = 1`，你会发现二维数组所有子数组的第一项都被改为1**
 
-![请添加图片描述](https://img-blog.csdnimg.cn/64d03615be70474e93adc6b43ce71807.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAT2NlYW7vvIHvvIE=,size_20,color_FFFFFF,t_70,g_se,x_16)
+![请添加图片描述](https://fastly.jsdelivr.net/gh/Ocean-H1/blog_image_bed/2d_array2.png)
 ## 出错的原因
-![请添加图片描述](https://img-blog.csdnimg.cn/5dfc8d3a1dae498baf998ce1be1eadec.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAT2NlYW7vvIHvvIE=,size_20,color_FFFFFF,t_70,g_se,x_16)
+![请添加图片描述](https://fastly.jsdelivr.net/gh/Ocean-H1/blog_image_bed/2d_array3.png)
 
 ## 解决办法
 
