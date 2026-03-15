@@ -1,10 +1,10 @@
 import type {
+	ExpressiveCodeConfig,
+	FriendLinksItem,
 	LicenseConfig,
 	NavBarConfig,
 	ProfileConfig,
 	SiteConfig,
-	FriendLinksItem,
-	ExpressiveCodeConfig,
 } from "./types/config";
 import { LinkPreset } from "./types/config";
 
@@ -141,7 +141,80 @@ export const friendLinksConfig: FriendLinksItem[] = [
 ];
 
 export const expressiveCodeConfig: ExpressiveCodeConfig = {
-	// Note: Some styles (such as background color) are being overridden, see the astro.config.mjs file.
+	// Note: Some styles (such as background color) are being overridden, see astro.config.mjs file.
 	// Please select a dark theme, as this blog theme currently only supports dark background color
 	theme: "github-dark",
+};
+
+export const shareConfig = {
+	categories: [
+		{
+			id: "tools",
+			name: "开发工具",
+			icon: "fa6-solid:wrench",
+			description: "提升开发效率的实用工具",
+			order: 1,
+			projects: [
+				{
+					id: "vscode",
+					title: "VS Code",
+					url: "https://code.visualstudio.com",
+					desc: "强大的代码编辑器",
+					icon: "fa6-brands:microsoft",
+					tags: ["编辑器", "IDE"],
+					category: "tools",
+					featured: true,
+				},
+				{
+					id: "eslint",
+					title: "ESLint",
+					url: "https://github.com/eslint/eslint",
+					desc: "JavaScript 代码检查工具",
+					tags: ["工具", "代码质量"],
+					category: "tools",
+				},
+			],
+		},
+		{
+			id: "ai",
+			name: "AI 助手",
+			icon: "fa6-solid:robot",
+			description: "人工智能相关工具和服务",
+			order: 2,
+			projects: [
+				{
+					id: "chatgpt",
+					title: "ChatGPT",
+					url: "https://chat.openai.com",
+					desc: "OpenAI 的对话式 AI",
+					icon: "fa6-brands:openai",
+					tags: ["LLM", "Chatbot"],
+					category: "ai",
+					featured: true,
+				},
+			],
+		},
+		{
+			id: "websites",
+			name: "常用网站",
+			icon: "fa6-solid:globe",
+			description: "值得收藏的网站和资源",
+			order: 3,
+			projects: [
+				{
+					id: "mdn",
+					title: "MDN Web Docs",
+					url: "https://developer.mozilla.org",
+					desc: "Web 开发权威文档",
+					icon: "fa6-brands:mozilla",
+					tags: ["文档", "Web"],
+					category: "websites",
+				},
+			],
+		},
+	],
+	layout: {
+		default: "top-nav",
+		columns: 3,
+	},
 };

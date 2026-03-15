@@ -118,3 +118,7 @@ export type FriendLinksItem = {
 export type ExpressiveCodeConfig = {
 	theme: string;
 };
+
+import type { ShareConfig } from "./share";
+
+export type { ShareConfig };
