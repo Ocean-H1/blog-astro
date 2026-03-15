@@ -4,6 +4,7 @@ import type {
 	LicenseConfig,
 	NavBarConfig,
 	ProfileConfig,
+	ShareConfig,
 	SiteConfig,
 } from "./types/config";
 import { LinkPreset } from "./types/config";
@@ -146,7 +147,7 @@ export const expressiveCodeConfig: ExpressiveCodeConfig = {
 	theme: "github-dark",
 };
 
-export const shareConfig = {
+export const shareConfig: ShareConfig = {
 	categories: [
 		{
 			id: "tools",
