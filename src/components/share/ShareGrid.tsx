@@ -6,15 +6,24 @@ import "./share.css";
 interface ShareGridProps {
 	projects: ShareProject[];
 	columns?: number;
+	categoryIcon?: string;
 }
 
-export default function ShareGrid({ projects, columns = 3 }: ShareGridProps) {
+export default function ShareGrid({
+	projects,
+	columns = 3,
+	categoryIcon,
+}: ShareGridProps) {
 	const gridClass = `share-grid-cols-${columns}`;
 
 	return (
 		<div className={`share-grid ${gridClass}`}>
 			{projects.map((project) => (
-				<ShareCard key={project.id} project={project} />
+				<ShareCard
+					key={project.id}
+					project={project}
+					categoryIcon={categoryIcon}
+				/>
 			))}
 		</div>
 	);

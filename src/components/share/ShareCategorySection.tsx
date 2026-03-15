@@ -39,7 +39,11 @@ export default function ShareCategorySection({
 				</div>
 			)}
 
-			<ShareGrid projects={category.projects} columns={columns} />
+			<ShareGrid
+				projects={category.projects}
+				columns={columns}
+				categoryIcon={category.icon}
+			/>
 		</section>
 	);
 }

@@ -16,6 +16,7 @@ interface ShareCardProps {
 	size?: "small" | "medium" | "large";
 	showTags?: boolean;
 	showMeta?: boolean;
+	categoryIcon?: string;
 }
 
 export default function ShareCard({
@@ -23,6 +24,7 @@ export default function ShareCard({
 	size = "medium",
 	showTags = true,
 	showMeta = true,
+	categoryIcon,
 }: ShareCardProps) {
 	const [githubData, setGithubData] = useState<any>(null);
 	const [loading, setLoading] = useState(false);
@@ -31,9 +33,11 @@ export default function ShareCard({
 		type: string;
 		value: string;
 	} | null>(null);
+	const [useCategoryIcon, setUseCategoryIcon] = useState(false);
 
 	useEffect(() => {
 		const githubMatch = isGitHubURL(project.url);
+		const hasIcon = project.icon !== undefined;
 
 		if (githubMatch.isGitHub && githubMatch.owner && githubMatch.repo) {
 			setLoading(true);
@@ -50,7 +54,16 @@ export default function ShareCard({
 				.finally(() => setLoading(false));
 		}
 
-		resolveIcon(project).then(setIconResult);
+		if (hasIcon) {
+			setUseCategoryIcon(false);
+			resolveIcon(project).then(setIconResult);
+		} else if (githubMatch.isGitHub) {
+			setUseCategoryIcon(false);
+			resolveIcon(project).then(setIconResult);
+		} else {
+			setUseCategoryIcon(true);
+			setIconResult(null);
+		}
 	}, [project]);
 
 	const displayTitle = project.title;
@@ -93,7 +106,9 @@ export default function ShareCard({
 			<div className="share-titlebar">
 				<div className="share-titlebar-left">
 					<div className="share-icon">
-						{iconResult?.type === "iconify" ? (
+						{useCategoryIcon && categoryIcon ? (
+							<Icon icon={categoryIcon} />
+						) : iconResult?.type === "iconify" ? (
 							<Icon icon={iconResult.value} />
 						) : iconResult?.type === "url" ? (
 							<img
@@ -101,6 +116,8 @@ export default function ShareCard({
 								alt={project.title}
 								className="share-icon-img"
 							/>
+						) : categoryIcon ? (
+							<Icon icon={categoryIcon} />
 						) : (
 							<Icon icon="material-symbols:public" />
 						)}
