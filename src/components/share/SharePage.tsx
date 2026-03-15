@@ -15,7 +15,7 @@ interface SharePageProps {
 export default function SharePage({
 	data,
 	layout,
-	showFeatured = true,
+	showFeatured = false,
 }: SharePageProps) {
 	const [activeCategory, setActiveCategory] = useState<string | null>(null);
 	const effectiveLayout = layout || data.layout.default;
