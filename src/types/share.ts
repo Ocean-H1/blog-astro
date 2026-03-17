@@ -13,6 +13,7 @@ export interface ShareProject {
 	language?: string;
 	license?: string;
 	githubAvatar?: string;
+	githubData?: GitHubRepoData;
 }
 
 export interface IconSource {

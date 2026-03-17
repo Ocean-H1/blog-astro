@@ -4,6 +4,7 @@ import { CacheManager } from "./cache-manager";
 export async function fetchGitHubRepo(
 	owner: string,
 	repo: string,
+	token?: string,
 ): Promise<GitHubRepoData | null> {
 	const cacheKey = `github-${owner}-${repo}`;
 
@@ -14,9 +15,18 @@ export async function fetchGitHubRepo(
 	}
 
 	try {
+		const headers: HeadersInit = {
+			Accept: "application/vnd.github.v3+json",
+		};
+
+		if (token) {
+			headers["Authorization"] = `Bearer ${token}`;
+		}
+
 		const response = await fetch(
 			`https://api.github.com/repos/${owner}/${repo}`,
 			{
+				headers,
 				referrerPolicy: "no-referrer",
 			},
 		);

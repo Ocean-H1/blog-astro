@@ -4,6 +4,33 @@ import SharePage from "@components/share/SharePage";
 import MainGridLayout from "../../layouts/MainGridLayout.astro";
 import I18nKey from "../../i18n/i18nKey";
 import { i18n } from "../../i18n/translation";
+import { fetchGitHubRepo, isGitHubURL } from "@/components/share/utils/github-api";
+import type { ShareConfig } from "@/types/share";
+
+const githubToken = import.meta.env.GITHUB_TOKEN;
+
+async function enrichWithGitHubData(config: ShareConfig): Promise<ShareConfig> {
+	const enrichedCategories = await Promise.all(
+		config.categories.map(async (category) => {
+			const enrichedProjects = await Promise.all(
+				category.projects.map(async (project) => {
+					const githubMatch = isGitHubURL(project.url);
+					if (githubMatch.isGitHub && githubMatch.owner && githubMatch.repo) {
+						const githubData = await fetchGitHubRepo(githubMatch.owner, githubMatch.repo, githubToken);
+						if (githubData) {
+							return { ...project, githubData };
+						}
+					}
+					return project;
+				})
+			);
+			return { ...category, projects: enrichedProjects };
+		})
+	);
+	return { ...config, categories: enrichedCategories };
+}
+
+const enrichedShareConfig = await enrichWithGitHubData(shareConfig);
 ---
 
 <MainGridLayout title={i18n(I18nKey.about)} description={i18n(I18nKey.about)}>
@@ -11,7 +38,7 @@ import { i18n } from "../../i18n/translation";
 		class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32"
 	>
 		<div class="card-base z-10 p-4 relative w-full">
-			<SharePage data={shareConfig} client:load />
+			<SharePage data={enrichedShareConfig} client:load />
 		</div>
 	</div>
 </MainGridLayout>

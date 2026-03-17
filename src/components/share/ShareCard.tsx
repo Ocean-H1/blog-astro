@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import type { ShareProject } from "@/types/share";
 import {
 	cleanDescription,
-	fetchGitHubRepo,
 	formatNumber,
 	isGitHubURL,
 } from "./utils/github-api";
@@ -26,9 +25,6 @@ export default function ShareCard({
 	showMeta = true,
 	categoryIcon,
 }: ShareCardProps) {
-	const [githubData, setGithubData] = useState<any>(null);
-	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState(false);
 	const [iconResult, setIconResult] = useState<{
 		type: string;
 		value: string;
@@ -38,21 +34,6 @@ export default function ShareCard({
 	useEffect(() => {
 		const githubMatch = isGitHubURL(project.url);
 		const hasIcon = project.icon !== undefined;
-
-		if (githubMatch.isGitHub && githubMatch.owner && githubMatch.repo) {
-			setLoading(true);
-			fetchGitHubRepo(githubMatch.owner, githubMatch.repo)
-				.then((data) => {
-					if (data) {
-						setGithubData(data);
-						setError(false);
-					} else {
-						setError(true);
-					}
-				})
-				.catch(() => setError(true))
-				.finally(() => setLoading(false));
-		}
 
 		if (hasIcon) {
 			setUseCategoryIcon(false);
@@ -67,6 +48,7 @@ export default function ShareCard({
 	}, [project]);
 
 	const displayTitle = project.title;
+	const githubData = project.githubData;
 	const displayDesc = githubData
 		? cleanDescription(githubData.description)
 		: project.desc;
@@ -91,7 +73,7 @@ export default function ShareCard({
 			href={project.url}
 			target="_blank"
 			rel="noopener noreferrer"
-			className={`share-card ${loading ? "fetch-waiting" : ""} ${error ? "fetch-error" : ""}`}
+			className="share-card"
 			style={
 				{
 					"--card-size":
@@ -133,9 +115,7 @@ export default function ShareCard({
 				)}
 			</div>
 
-			<div className="share-description">
-				{loading ? "Loading..." : displayDesc}
-			</div>
+			<div className="share-description">{displayDesc}</div>
 
 			{showMeta && (
 				<div className="share-infobar">
