@@ -5,8 +5,12 @@ interface CacheEntry<T> {
 
 const CACHE_DURATION = 24 * 60 * 60 * 1000;
 
+const isBrowser = typeof localStorage !== "undefined";
+
 export const CacheManager = {
 	get<T>(key: string): T | null {
+		if (!isBrowser) return null;
+
 		try {
 			const cached = localStorage.getItem(`share-${key}`);
 			if (!cached) return null;
@@ -27,6 +31,8 @@ export const CacheManager = {
 	},
 
 	set<T>(key: string, data: T): void {
+		if (!isBrowser) return;
+
 		try {
 			const entry: CacheEntry<T> = {
 				data,
@@ -39,6 +45,8 @@ export const CacheManager = {
 	},
 
 	clear(key?: string): void {
+		if (!isBrowser) return;
+
 		if (key) {
 			localStorage.removeItem(`share-${key}`);
 		} else {
